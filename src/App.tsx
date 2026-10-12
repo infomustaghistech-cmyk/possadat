@@ -60,7 +60,7 @@ const MainAppLayout: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-          className="min-h-screen bg-[#F4F7FB] flex text-slate-800 antialiased font-sans selection:bg-blue-100 selection:text-blue-900"
+          className="min-h-screen bg-[#FDFBF7] flex text-slate-800 antialiased font-sans selection:bg-[#FFCCB8] selection:text-slate-900 overflow-x-hidden w-full max-w-full"
         >
           {/* Sidebar Navigation */}
           <Sidebar
@@ -69,12 +69,12 @@ const MainAppLayout: React.FC = () => {
           />
 
           {/* Main Content Area */}
-          <div className="flex-1 flex flex-col min-w-0 lg:pl-64 transition-all duration-300">
+          <div className="flex-1 flex flex-col min-w-0 lg:pl-64 transition-all duration-300 w-full max-w-full overflow-x-hidden">
             {/* Top Header */}
             <TopBar onMenuClick={() => setIsMobileNavOpen(true)} />
 
             {/* Dynamic Screen View with Slow & Silky Smooth Page Transitions */}
-            <main className="flex-1 p-4 sm:p-6 w-full overflow-x-hidden">
+            <main className="flex-1 p-3 sm:p-6 w-full max-w-full overflow-x-hidden">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentTab}

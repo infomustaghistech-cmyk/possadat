@@ -178,9 +178,65 @@ export const CustomersDealersScreen: React.FC = () => {
       </div>
 
       {activeTab === 'customers' ? (
-        /* CUSTOMERS TABLE */
-        <div className="bg-white rounded-[14px] border border-[#E6ECF3] shadow-xs overflow-hidden">
-          <div className="overflow-x-auto">
+        /* CUSTOMERS VIEW */
+        <div className="bg-white rounded-[14px] border border-[#F0E6DD] shadow-xs overflow-hidden">
+          {/* Mobile Customer Cards */}
+          <div className="block md:hidden divide-y divide-slate-100">
+            {filteredCustomers.length === 0 ? (
+              <div className="p-6 text-center text-slate-400 text-xs">No customers found.</div>
+            ) : (
+              filteredCustomers.map((c) => {
+                const bal = getCustomerBalance(c.id);
+                return (
+                  <div key={c.id} className="p-3.5 space-y-2.5">
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <h4 className="font-extrabold text-slate-900 text-sm">{c.name}</h4>
+                        <p className="text-[11px] text-slate-400">{c.phone} &bull; {c.area}</p>
+                      </div>
+                      <div className="text-right">
+                        <span className="text-[10px] uppercase font-bold text-slate-400 block">Balance</span>
+                        <span className={`text-xs font-extrabold tabular-nums ${bal > 0 ? 'text-amber-600' : 'text-slate-400'}`}>
+                          {formatPKR(bal)}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={() => setSelectedCustomer(c)}
+                        className="flex-1 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-[11px]"
+                      >
+                        History
+                      </button>
+                      {bal > 0 && (
+                        <button
+                          onClick={() => {
+                            setBalanceCustomer(c);
+                            setReceiveAmount(bal);
+                          }}
+                          className="flex-1 py-1.5 rounded-lg bg-[#FFFAD3] text-amber-900 border border-[#FFDBB0] font-bold text-[11px]"
+                        >
+                          Receive
+                        </button>
+                      )}
+                      <button
+                        onClick={() => {
+                          const text = `Dear ${c.name}, greetings from SADAT GROUP Karachi! Regarding your account: current pending balance is ${formatPKR(bal)}. Contact us at +92 21 34981122.`;
+                          openWhatsAppLink(c.phone, text);
+                        }}
+                        className="px-3 py-1.5 rounded-lg bg-emerald-600 text-white font-bold text-[11px]"
+                      >
+                        WhatsApp
+                      </button>
+                    </div>
+                  </div>
+                );
+              })
+            )}
+          </div>
+
+          {/* Desktop Customer Table */}
+          <div className="hidden md:block overflow-x-auto">
             <table className="w-full text-left text-xs">
               <thead className="bg-slate-50/80 text-slate-500 font-bold uppercase tracking-wider border-b border-slate-100">
                 <tr>
@@ -259,9 +315,52 @@ export const CustomersDealersScreen: React.FC = () => {
           </div>
         </div>
       ) : (
-        /* DEALERS TABLE */
-        <div className="bg-white rounded-[14px] border border-[#E6ECF3] shadow-xs overflow-hidden">
-          <div className="overflow-x-auto">
+        /* DEALERS VIEW */
+        <div className="bg-white rounded-[14px] border border-[#F0E6DD] shadow-xs overflow-hidden">
+          {/* Mobile Dealer Cards (Matches Phone 3 in user reference screenshot) */}
+          <div className="block md:hidden divide-y divide-slate-100 p-2 space-y-2.5">
+            {filteredDealers.map((d) => {
+              const bal = getDealerBalance(d.id);
+              return (
+                <div key={d.id} className="bg-white rounded-2xl border border-[#F0E6DD] p-4 shadow-2xs space-y-3">
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <h4 className="font-extrabold text-slate-900 text-sm">{d.name}</h4>
+                      <p className="text-[11px] text-slate-500 mt-0.5">{d.city} &bull; {d.contactPerson}</p>
+                    </div>
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-700">
+                      {d.creditTermsDays} Days
+                    </span>
+                  </div>
+
+                  <div className="flex items-center justify-between pt-1 border-t border-slate-50">
+                    <div>
+                      <span className="text-[10px] uppercase font-bold text-slate-400 block">Balance</span>
+                      <span className="text-sm font-extrabold text-rose-600 tabular-nums">
+                        {formatPKR(bal)}
+                      </span>
+                    </div>
+                    <div className="text-right">
+                      <span className="text-[10px] uppercase font-bold text-slate-400 block">Contact</span>
+                      <span className="text-xs font-semibold text-slate-700 font-mono">{d.phone}</span>
+                    </div>
+                  </div>
+
+                  <button
+                    onClick={() => {
+                      setCurrentTab('wholesale');
+                    }}
+                    className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-[#FFB1B1] via-[#FFCCB8] to-[#FFDBB0] text-slate-900 font-extrabold text-xs shadow-2xs hover:brightness-105 transition-all text-center"
+                  >
+                    View Details
+                  </button>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Desktop Dealer Table */}
+          <div className="hidden md:block overflow-x-auto">
             <table className="w-full text-left text-xs">
               <thead className="bg-slate-50/80 text-slate-500 font-bold uppercase tracking-wider border-b border-slate-100">
                 <tr>

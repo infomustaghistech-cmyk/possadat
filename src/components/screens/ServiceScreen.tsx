@@ -358,7 +358,7 @@ export const ServiceScreen: React.FC = () => {
       {activeMainTab === 'complaints' ? (
         <div className="space-y-4">
           {/* Status Tabs with Live Counts */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-1">
+          <div className="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar">
             {Object.entries(statusCounts).map(([status, count]) => (
               <button
                 key={status}
@@ -397,9 +397,65 @@ export const ServiceScreen: React.FC = () => {
 
           {/* Main 2-Column Layout: Table (8 cols) + Right Job Details Panel (4 cols) */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-            {/* Table */}
-            <div className="lg:col-span-8 bg-white rounded-[14px] border border-[#E6ECF3] shadow-xs overflow-hidden">
-              <div className="overflow-x-auto">
+            {/* Table & Mobile Cards */}
+            <div className="lg:col-span-8 bg-white rounded-[14px] border border-[#F0E6DD] shadow-xs overflow-hidden">
+              {/* Mobile Card List (Matches Phone 2 in user reference screenshot) */}
+              <div className="block md:hidden divide-y divide-slate-100">
+                {filteredComplaints.length === 0 ? (
+                  <div className="p-6 text-center text-slate-400 text-xs">
+                    No service complaints found for this status.
+                  </div>
+                ) : (
+                  filteredComplaints.map((c) => {
+                    const isSelected = selectedComplaint?.id === c.id;
+                    return (
+                      <div
+                        key={c.id}
+                        onClick={() => setSelectedComplaintId(c.id)}
+                        className={`p-3.5 flex items-center justify-between cursor-pointer transition-colors ${
+                          isSelected ? 'bg-[#FFFAD3]/60' : 'hover:bg-slate-50'
+                        }`}
+                      >
+                        <div>
+                          <div className="flex items-center gap-1.5">
+                            <span className="font-extrabold text-slate-900 text-xs sm:text-sm">{c.id}</span>
+                            {c.isRecomplaint && (
+                              <span className="px-1.5 py-0.5 rounded text-[9px] font-bold bg-rose-100 text-rose-700">
+                                Re
+                              </span>
+                            )}
+                          </div>
+                          <p className="text-xs font-semibold text-slate-800 mt-0.5">{c.appliance}</p>
+                          <p className="text-[11px] text-slate-400 truncate max-w-[190px]">{c.issue}</p>
+                        </div>
+                        <div className="text-right flex flex-col items-end gap-1 shrink-0">
+                          <span
+                            className={`px-2.5 py-1 rounded-full text-[11px] font-bold ${
+                              c.status === 'New'
+                                ? 'bg-blue-100 text-blue-700'
+                                : c.status === 'Assigned'
+                                ? 'bg-purple-100 text-purple-700'
+                                : c.status === 'In Progress'
+                                ? 'bg-sky-100 text-sky-700'
+                                : c.status === 'Waiting Parts'
+                                ? 'bg-amber-100 text-amber-700'
+                                : c.status === 'Completed'
+                                ? 'bg-emerald-100 text-emerald-700'
+                                : 'bg-slate-100 text-slate-600'
+                            }`}
+                          >
+                            {c.status}
+                          </span>
+                          <span className="text-[10px] text-slate-400 font-medium">{c.customerName}</span>
+                        </div>
+                      </div>
+                    );
+                  })
+                )}
+              </div>
+
+              {/* Desktop Table View */}
+              <div className="hidden md:block overflow-x-auto">
                 <table className="w-full text-left text-xs">
                   <thead className="bg-slate-50/80 text-slate-500 font-bold uppercase tracking-wider border-b border-slate-100">
                     <tr>

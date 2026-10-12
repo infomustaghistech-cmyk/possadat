@@ -47,7 +47,7 @@ export const LoginScreen: React.FC = () => {
       />
 
       {/* Cinematic Vignette Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/65 to-slate-950/80 backdrop-blur-[1px]" />
+      <div className="absolute inset-0 bg-gradient-to-r from-stone-950/90 via-stone-950/75 to-stone-950/85 backdrop-blur-[1px]" />
       <div className="absolute inset-0 bg-radial-at-c from-transparent via-black/30 to-black/70 pointer-events-none" />
 
       {/* Main Container */}
@@ -59,14 +59,14 @@ export const LoginScreen: React.FC = () => {
           <div className="lg:col-span-7 space-y-6 text-left">
             {/* Logo Emblem & Brand Title */}
             <div className="flex items-center gap-4 select-none">
-              <div className="relative w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-full p-1 bg-gradient-to-tr from-[#1E6BFF] via-[#00B4D8] to-[#90E0EF] shadow-2xl shadow-cyan-500/30 flex items-center justify-center">
-                <div className="w-full h-full rounded-full bg-gradient-to-b from-[#0B1F3A] to-[#040D1A] flex items-center justify-center border border-white/20">
+              <div className="relative w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-full p-1 bg-gradient-to-tr from-[#FFB1B1] via-[#FFCCB8] to-[#FFDBB0] shadow-2xl shadow-[#FFB1B1]/30 flex items-center justify-center">
+                <div className="w-full h-full rounded-full bg-gradient-to-b from-[#2B1B19] to-[#150D0C] flex items-center justify-center border border-white/20">
                   <svg viewBox="0 0 48 48" className="w-10 h-10 sm:w-12 sm:h-12" fill="none">
                     <defs>
                       <linearGradient id="sgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#38BDF8" />
-                        <stop offset="50%" stopColor="#2563EB" />
-                        <stop offset="100%" stopColor="#60A5FA" />
+                        <stop offset="0%" stopColor="#FFB1B1" />
+                        <stop offset="50%" stopColor="#FFCCB8" />
+                        <stop offset="100%" stopColor="#FFDBB0" />
                       </linearGradient>
                     </defs>
                     <path
@@ -76,8 +76,8 @@ export const LoginScreen: React.FC = () => {
                       strokeLinecap="round"
                       strokeLinejoin="round"
                     />
-                    <circle cx="33" cy="14" r="2.5" fill="#38BDF8" />
-                    <circle cx="15" cy="34" r="2.5" fill="#60A5FA" />
+                    <circle cx="33" cy="14" r="2.5" fill="#FFFAD3" />
+                    <circle cx="15" cy="34" r="2.5" fill="#FFDBB0" />
                   </svg>
                 </div>
               </div>
@@ -86,26 +86,26 @@ export const LoginScreen: React.FC = () => {
                 <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-wider leading-none">
                   SADAT GROUP
                 </h1>
-                <p className="text-base sm:text-lg font-extrabold text-[#38BDF8] tracking-widest uppercase mt-1">
+                <p className="text-base sm:text-lg font-extrabold text-[#FFDBB0] tracking-widest uppercase mt-1">
                   CRM &amp; ERP
                 </p>
               </div>
             </div>
 
             {/* Sub-tagline */}
-            <p className="text-base sm:text-lg font-medium text-slate-200 tracking-wide">
+            <p className="text-base sm:text-lg font-medium text-stone-200 tracking-wide">
               Manage Your Business &bull; Grow Together
             </p>
           </div>
 
           {/* Right Login Card */}
           <div className="lg:col-span-5 flex justify-center lg:justify-end">
-            <div className="w-full max-w-[420px] bg-white rounded-[28px] p-7 sm:p-9 shadow-2xl border border-slate-100">
+            <div className="w-full max-w-[420px] bg-white rounded-[28px] p-7 sm:p-9 shadow-2xl border border-[#F0E6DD]">
               
               {/* Card Header Avatar */}
               <div className="mb-6 text-center">
-                <div className="w-14 h-14 rounded-full bg-blue-50 text-[#1E6BFF] flex items-center justify-center mx-auto mb-3 shadow-xs">
-                  <User className="w-7 h-7 text-[#1E6BFF]" />
+                <div className="w-14 h-14 rounded-full bg-[#FFFAD3] text-[#2D1515] border border-[#FFDBB0] flex items-center justify-center mx-auto mb-3 shadow-xs">
+                  <User className="w-7 h-7 text-[#D44A4A]" />
                 </div>
                 <h2 className="text-2xl font-bold text-slate-900 tracking-tight">
                   Welcome Back
@@ -124,8 +124,8 @@ export const LoginScreen: React.FC = () => {
               )}
 
               {infoMessage && (
-                <div className="mb-4 p-3 rounded-xl bg-blue-50 border border-blue-200 text-blue-700 text-xs font-medium flex items-start gap-2">
-                  <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
+                <div className="mb-4 p-3 rounded-xl bg-[#FFFAD3]/60 border border-[#FFDBB0] text-amber-950 text-xs font-medium flex items-start gap-2">
+                  <Info className="w-4 h-4 text-[#D44A4A] shrink-0 mt-0.5" />
                   <span>{infoMessage}</span>
                 </div>
               )}
@@ -133,8 +133,8 @@ export const LoginScreen: React.FC = () => {
               {/* Login Form */}
               <form onSubmit={handleSubmit} className="space-y-4">
                 {/* Username Field */}
-                <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl border border-slate-200 bg-white focus-within:ring-2 focus-within:ring-[#1E6BFF] focus-within:border-transparent transition-all">
-                  <User className="w-5 h-5 text-slate-500 shrink-0" />
+                <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl border border-slate-200 bg-white focus-within:ring-2 focus-within:ring-[#FFB1B1] focus-within:border-transparent transition-all">
+                  <User className="w-5 h-5 text-slate-400 shrink-0" />
                   <div className="flex-1 min-w-0">
                     <span className="block text-[11px] font-medium text-slate-400 leading-none">
                       Username
@@ -150,8 +150,8 @@ export const LoginScreen: React.FC = () => {
                 </div>
 
                 {/* Password Field */}
-                <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl border border-slate-200 bg-white focus-within:ring-2 focus-within:ring-[#1E6BFF] focus-within:border-transparent transition-all">
-                  <Lock className="w-5 h-5 text-slate-500 shrink-0" />
+                <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl border border-slate-200 bg-white focus-within:ring-2 focus-within:ring-[#FFB1B1] focus-within:border-transparent transition-all">
+                  <Lock className="w-5 h-5 text-slate-400 shrink-0" />
                   <div className="flex-1 min-w-0">
                     <span className="block text-[11px] font-medium text-slate-400 leading-none">
                       Password
@@ -176,7 +176,7 @@ export const LoginScreen: React.FC = () => {
                 {/* Login Button */}
                 <button
                   type="submit"
-                  className="w-full mt-2 py-3.5 px-4 rounded-xl bg-[#1E6BFF] hover:bg-blue-600 text-white font-bold text-base shadow-lg shadow-blue-500/25 transition-all transform active:scale-[0.99]"
+                  className="w-full mt-2 py-3.5 px-4 rounded-xl bg-gradient-to-r from-[#FFB1B1] via-[#FFCCB8] to-[#FFDBB0] hover:brightness-105 text-slate-900 font-extrabold text-base shadow-lg shadow-[#FFB1B1]/30 transition-all transform active:scale-[0.99]"
                 >
                   Login
                 </button>
@@ -188,7 +188,7 @@ export const LoginScreen: React.FC = () => {
                       type="checkbox"
                       checked={rememberMe}
                       onChange={(e) => setRememberMe(e.target.checked)}
-                      className="w-4 h-4 rounded text-[#1E6BFF] focus:ring-[#1E6BFF] border-slate-300"
+                      className="w-4 h-4 rounded text-[#D44A4A] focus:ring-[#FFB1B1] border-slate-300"
                     />
                     <span>Remember me</span>
                   </label>
@@ -196,7 +196,7 @@ export const LoginScreen: React.FC = () => {
                   <button
                     type="button"
                     onClick={handleForgotPassword}
-                    className="text-[#1E6BFF] hover:underline font-semibold"
+                    className="text-[#D44A4A] hover:underline font-semibold"
                   >
                     Forgot password?
                   </button>

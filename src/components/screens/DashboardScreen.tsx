@@ -209,10 +209,9 @@ export const DashboardScreen: React.FC = () => {
     if (isSadat) {
       const goods = Math.max(0, metrics.goodsProfit);
       const service = Math.max(0, metrics.serviceShopProfit);
-      const total = goods + service || 1;
       return [
-        { name: 'Goods Sale', value: goods, color: '#1E6BFF' },
-        { name: 'Service Workshop', value: service, color: '#0EA5A4' },
+        { name: 'Goods Sale', value: goods, color: '#FFB1B1' },
+        { name: 'Service Workshop', value: service, color: '#FFDBB0' },
       ];
     } else {
       const wholesale = Math.max(0, metrics.goodsProfit);
@@ -220,8 +219,8 @@ export const DashboardScreen: React.FC = () => {
         .filter((p) => p.date.startsWith(selectedMonth))
         .reduce((sum, p) => sum + p.amount, 0);
       return [
-        { name: 'Appliance Sales', value: wholesale, color: '#16A34A' },
-        { name: 'Cash Recovery', value: recoveryCollected, color: '#0EA5A4' },
+        { name: 'Appliance Sales', value: wholesale, color: '#FFDBB0' },
+        { name: 'Cash Recovery', value: recoveryCollected, color: '#FFCCB8' },
       ];
     }
   }, [isSadat, metrics, dealerPayments, selectedMonth]);
@@ -296,105 +295,105 @@ export const DashboardScreen: React.FC = () => {
   }, [dispatches]);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       {/* Page Title & Controls */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <div className="flex items-center gap-2.5">
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+          <div className="flex items-center gap-2 flex-wrap">
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">
               Executive Dashboard
             </h1>
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
               Live
             </span>
           </div>
-          <p className="text-slate-500 text-xs sm:text-sm mt-1">
+          <p className="text-slate-500 text-[11px] sm:text-xs md:text-sm mt-0.5">
             Real-time business performance overview for {isSadat ? 'Sadat Electronics' : 'AK Traders'}
           </p>
         </div>
 
-        <div className="flex items-center gap-2">
-          <div className="px-3.5 py-1.5 rounded-xl bg-white border border-[#E6ECF3] shadow-2xs text-xs font-semibold text-slate-700 flex items-center gap-2">
-            <Clock className="w-3.5 h-3.5 text-[#1E6BFF]" />
+        <div className="flex items-center gap-2 self-start sm:self-auto">
+          <div className="px-3 py-1.5 rounded-xl bg-white border border-[#F0E6DD] shadow-2xs text-[11px] sm:text-xs font-semibold text-slate-700 flex items-center gap-1.5">
+            <Clock className="w-3.5 h-3.5 text-[#D44A4A]" />
             <span>Today: 12 Oct 2026</span>
           </div>
         </div>
       </div>
 
-      {/* Row 1: 4 KPI Tiles with Solid Colored Header Strips */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        {/* KPI Tile 1: Total Sales / Dispatch (Blue #1E6BFF) */}
-        <div className="bg-white rounded-[14px] border border-[#E6ECF3] shadow-xs overflow-hidden flex flex-col justify-between">
-          <div className="bg-[#1E6BFF] px-4 py-2.5 text-white flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider">
+      {/* Row 1: 4 KPI Tiles Styled with User's 4-Color Palette (2x2 on Mobile like screenshot) */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
+        {/* KPI Tile 1: Total Sales / Dispatch (#FFB1B1 Coral Rose) */}
+        <div className="bg-white rounded-[14px] border border-[#F0E6DD] shadow-xs overflow-hidden flex flex-col justify-between">
+          <div className="bg-gradient-to-r from-[#FFB1B1] to-[#FF9E9E] px-3 py-2 sm:px-4 sm:py-2.5 text-slate-900 flex items-center justify-between font-bold">
+            <span className="text-[11px] sm:text-xs uppercase tracking-wider truncate">
               {metrics.card1Title}
             </span>
-            {isSadat ? <ShoppingBag className="w-4 h-4" /> : <Truck className="w-4 h-4" />}
+            {isSadat ? <ShoppingBag className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-900 shrink-0" /> : <Truck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-900 shrink-0" />}
           </div>
-          <div className="p-4 sm:p-5">
-            <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 tabular-nums">
+          <div className="p-3 sm:p-5">
+            <div className="text-lg sm:text-2xl lg:text-3xl font-extrabold text-slate-900 tabular-nums truncate">
               {formatPKR(metrics.card1Value)}
             </div>
-            <div className="flex items-center gap-1.5 text-xs font-semibold text-emerald-600 mt-2">
-              <TrendingUp className="w-3.5 h-3.5" />
-              <span>↑ {metrics.card1Growth.toFixed(1)}% vs last month</span>
+            <div className="flex items-center gap-1 text-[10px] sm:text-xs font-semibold text-emerald-600 mt-1 sm:mt-2 truncate">
+              <TrendingUp className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" />
+              <span>↑ {metrics.card1Growth.toFixed(1)}%</span>
             </div>
           </div>
         </div>
 
-        {/* KPI Tile 2: Service Revenue / Recovery (Teal #0EA5A4) */}
-        <div className="bg-white rounded-[14px] border border-[#E6ECF3] shadow-xs overflow-hidden flex flex-col justify-between">
-          <div className="bg-[#0EA5A4] px-4 py-2.5 text-white flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider">
+        {/* KPI Tile 2: Service Revenue / Recovery (#FFCCB8 Rosy Peach) */}
+        <div className="bg-white rounded-[14px] border border-[#F0E6DD] shadow-xs overflow-hidden flex flex-col justify-between">
+          <div className="bg-gradient-to-r from-[#FFCCB8] to-[#FFBFA8] px-3 py-2 sm:px-4 sm:py-2.5 text-slate-900 flex items-center justify-between font-bold">
+            <span className="text-[11px] sm:text-xs uppercase tracking-wider truncate">
               {metrics.card2Title}
             </span>
-            {isSadat ? <Wrench className="w-4 h-4" /> : <Receipt className="w-4 h-4" />}
+            {isSadat ? <Wrench className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-900 shrink-0" /> : <Receipt className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-900 shrink-0" />}
           </div>
-          <div className="p-4 sm:p-5">
-            <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 tabular-nums">
+          <div className="p-3 sm:p-5">
+            <div className="text-lg sm:text-2xl lg:text-3xl font-extrabold text-slate-900 tabular-nums truncate">
               {formatPKR(metrics.card2Value)}
             </div>
-            <div className="flex items-center gap-1.5 text-xs font-semibold text-emerald-600 mt-2">
-              <TrendingUp className="w-3.5 h-3.5" />
-              <span>↑ {metrics.card2Growth.toFixed(1)}% vs last month</span>
+            <div className="flex items-center gap-1 text-[10px] sm:text-xs font-semibold text-emerald-600 mt-1 sm:mt-2 truncate">
+              <TrendingUp className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" />
+              <span>↑ {metrics.card2Growth.toFixed(1)}%</span>
             </div>
           </div>
         </div>
 
-        {/* KPI Tile 3: Expenses (Orange #F59E0B) */}
-        <div className="bg-white rounded-[14px] border border-[#E6ECF3] shadow-xs overflow-hidden flex flex-col justify-between">
-          <div className="bg-[#F59E0B] px-4 py-2.5 text-white flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider">
+        {/* KPI Tile 3: Expenses (#FFDBB0 Warm Apricot) */}
+        <div className="bg-white rounded-[14px] border border-[#F0E6DD] shadow-xs overflow-hidden flex flex-col justify-between">
+          <div className="bg-gradient-to-r from-[#FFDBB0] to-[#FFCEA0] px-3 py-2 sm:px-4 sm:py-2.5 text-slate-900 flex items-center justify-between font-bold">
+            <span className="text-[11px] sm:text-xs uppercase tracking-wider truncate">
               {metrics.card3Title}
             </span>
-            <BadgeDollarSign className="w-4 h-4" />
+            <BadgeDollarSign className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-900 shrink-0" />
           </div>
-          <div className="p-4 sm:p-5">
-            <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 tabular-nums">
+          <div className="p-3 sm:p-5">
+            <div className="text-lg sm:text-2xl lg:text-3xl font-extrabold text-slate-900 tabular-nums truncate">
               {formatPKR(metrics.card3Value)}
             </div>
-            <div className="flex items-center gap-1.5 text-xs font-semibold text-slate-500 mt-2">
-              <span>{metrics.card3Growth >= 0 ? `↑ ${metrics.card3Growth.toFixed(1)}%` : `↓ ${Math.abs(metrics.card3Growth).toFixed(1)}%`} vs last month</span>
+            <div className="flex items-center gap-1 text-[10px] sm:text-xs font-semibold text-slate-500 mt-1 sm:mt-2 truncate">
+              <span>{metrics.card3Growth >= 0 ? `↑ ${metrics.card3Growth.toFixed(1)}%` : `↓ ${Math.abs(metrics.card3Growth).toFixed(1)}%`}</span>
             </div>
           </div>
         </div>
 
-        {/* KPI Tile 4: Net Profit (Purple #7C3AED) */}
-        <div className="bg-white rounded-[14px] border border-[#E6ECF3] shadow-xs overflow-hidden flex flex-col justify-between">
-          <div className="bg-[#7C3AED] px-4 py-2.5 text-white flex items-center justify-between">
-            <span className="text-xs font-bold uppercase tracking-wider">
+        {/* KPI Tile 4: Net Profit (#FFFAD3 Cream Yellow) */}
+        <div className="bg-white rounded-[14px] border border-[#F0E6DD] shadow-xs overflow-hidden flex flex-col justify-between">
+          <div className="bg-gradient-to-r from-[#FFFAD3] to-[#FFF5BA] px-3 py-2 sm:px-4 sm:py-2.5 text-slate-900 flex items-center justify-between font-bold border-b border-[#FFDBB0]/40">
+            <span className="text-[11px] sm:text-xs uppercase tracking-wider truncate">
               {metrics.card4Title}
             </span>
-            <TrendingUp className="w-4 h-4" />
+            <TrendingUp className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-900 shrink-0" />
           </div>
-          <div className="p-4 sm:p-5">
-            <div className="text-2xl sm:text-3xl font-extrabold text-slate-900 tabular-nums">
+          <div className="p-3 sm:p-5">
+            <div className="text-lg sm:text-2xl lg:text-3xl font-extrabold text-slate-900 tabular-nums truncate">
               {formatPKR(metrics.card4Value)}
             </div>
-            <div className="flex items-center gap-1.5 text-xs font-semibold text-emerald-600 mt-2">
-              <TrendingUp className="w-3.5 h-3.5" />
-              <span>↑ {metrics.card4Growth.toFixed(1)}% vs last month</span>
+            <div className="flex items-center gap-1 text-[10px] sm:text-xs font-semibold text-emerald-600 mt-1 sm:mt-2 truncate">
+              <TrendingUp className="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" />
+              <span>↑ {metrics.card4Growth.toFixed(1)}%</span>
             </div>
           </div>
         </div>
@@ -522,7 +521,7 @@ export const DashboardScreen: React.FC = () => {
               </div>
               <button
                 onClick={() => setCurrentTab('inventory')}
-                className="text-[11px] font-bold text-[#1E6BFF] hover:underline shrink-0"
+                className="text-[11px] font-bold text-[#D44A4A] hover:underline shrink-0"
               >
                 View Stock →
               </button>
@@ -543,16 +542,16 @@ export const DashboardScreen: React.FC = () => {
               </div>
               <button
                 onClick={() => setCurrentTab('customers')}
-                className="text-[11px] font-bold text-[#1E6BFF] hover:underline shrink-0"
+                className="text-[11px] font-bold text-amber-800 hover:underline shrink-0"
               >
                 View Customers →
               </button>
             </div>
 
             {/* Overdue dealers alert */}
-            <div className="p-3 rounded-xl bg-blue-50/70 border border-blue-100 flex items-start justify-between gap-3">
+            <div className="p-3 rounded-xl bg-[#FFFAD3]/60 border border-[#FFDBB0] flex items-start justify-between gap-3">
               <div className="flex items-start gap-2.5">
-                <ShieldAlert className="w-4 h-4 text-blue-600 mt-0.5 shrink-0" />
+                <ShieldAlert className="w-4 h-4 text-amber-800 mt-0.5 shrink-0" />
                 <div>
                   <p className="text-xs font-bold text-slate-900">
                     {overdueDealersCount} wholesale dealers outstanding
@@ -564,7 +563,7 @@ export const DashboardScreen: React.FC = () => {
               </div>
               <button
                 onClick={() => setCurrentTab('wholesale')}
-                className="text-[11px] font-bold text-[#1E6BFF] hover:underline shrink-0"
+                className="text-[11px] font-bold text-[#D44A4A] hover:underline shrink-0"
               >
                 View Dealers →
               </button>
@@ -580,7 +579,7 @@ export const DashboardScreen: React.FC = () => {
       {/* Row 3: 6-Month Chart & Latest Sales Table */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* 6-Month Bar Chart */}
-        <div className="lg:col-span-2 bg-white rounded-[14px] border border-[#E6ECF3] p-5 sm:p-6 shadow-xs">
+        <div className="lg:col-span-2 bg-white rounded-[14px] border border-[#F0E6DD] p-5 sm:p-6 shadow-xs">
           <div className="flex items-center justify-between mb-6">
             <div>
               <h3 className="text-base font-bold text-slate-900">
@@ -592,11 +591,11 @@ export const DashboardScreen: React.FC = () => {
             </div>
             <div className="flex items-center gap-4 text-xs font-semibold">
               <div className="flex items-center gap-1.5">
-                <span className="w-3 h-3 rounded-sm bg-[#1E6BFF]" />
+                <span className="w-3 h-3 rounded-sm bg-[#FFB1B1]" />
                 <span className="text-slate-600">Revenue</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <span className="w-3 h-3 rounded-sm bg-[#7C3AED]" />
+                <span className="w-3 h-3 rounded-sm bg-[#FFDBB0]" />
                 <span className="text-slate-600">Net Profit</span>
               </div>
             </div>
@@ -616,22 +615,22 @@ export const DashboardScreen: React.FC = () => {
                   formatter={(val: any) => [formatPKR(Number(val)), '']}
                   contentStyle={{ borderRadius: '12px', fontSize: '12px' }}
                 />
-                <Bar dataKey="Revenue" fill="#1E6BFF" radius={[6, 6, 0, 0]} barSize={22} />
-                <Bar dataKey="NetProfit" fill="#7C3AED" radius={[6, 6, 0, 0]} barSize={22} />
+                <Bar dataKey="Revenue" fill="#FFB1B1" radius={[6, 6, 0, 0]} barSize={22} />
+                <Bar dataKey="NetProfit" fill="#FFDBB0" radius={[6, 6, 0, 0]} barSize={22} />
               </BarChart>
             </ResponsiveContainer>
           </div>
         </div>
 
         {/* Latest Activity Table */}
-        <div className="bg-white rounded-[14px] border border-[#E6ECF3] p-5 shadow-xs flex flex-col justify-between">
+        <div className="bg-white rounded-[14px] border border-[#F0E6DD] p-5 shadow-xs flex flex-col justify-between">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-sm font-bold text-slate-900">
               {isSadat ? 'Latest Retail Sales' : 'Latest Dispatches'}
             </h3>
             <button
               onClick={() => setCurrentTab(isSadat ? 'sales' : 'wholesale')}
-              className="text-xs font-semibold text-[#1E6BFF] hover:underline"
+              className="text-xs font-semibold text-[#D44A4A] hover:underline"
             >
               See History
             </button>

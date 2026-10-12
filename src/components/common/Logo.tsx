@@ -23,7 +23,7 @@ export const Logo: React.FC<LogoProps> = ({
     <div className={`flex items-center gap-3 select-none ${className}`}>
       {/* Dynamic S Crest Logo */}
       <div
-        className="relative flex items-center justify-center shrink-0 rounded-xl bg-gradient-to-tr from-[#1450C9] via-[#1E6BFF] to-[#60A5FA] shadow-md shadow-blue-900/30 text-white"
+        className="relative flex items-center justify-center shrink-0 rounded-xl bg-gradient-to-tr from-[#FFB1B1] via-[#FFCCB8] to-[#FFDBB0] shadow-md shadow-[#FFB1B1]/30 text-[#2D1515]"
         style={{ width: dimensions.icon, height: dimensions.icon }}
       >
         <svg
@@ -34,9 +34,9 @@ export const Logo: React.FC<LogoProps> = ({
         >
           <path
             d="M28 13.5C28 10.4624 25.5376 8 22.5 8H14C12.3431 8 11 9.34315 11 11C11 12.6569 12.3431 14 14 14H22.5C23.8807 14 25 15.1193 25 16.5C25 17.8807 23.8807 19 22.5 19H17C13.6863 19 11 21.6863 11 25C11 28.3137 13.6863 31 17 31H26C27.6569 31 29 29.6569 29 28C29 26.3431 27.6569 25 26 25H17C15.6193 25 14.5 23.8807 14.5 22.5C14.5 21.1193 15.6193 20 17 20H22.5C25.5376 20 28 17.5376 28 14.5V13.5Z"
-            fill="white"
+            fill="#2D1515"
           />
-          <circle cx="28" cy="10" r="2.5" fill="#93C5FD" />
+          <circle cx="28" cy="10" r="2.5" fill="#FFFAD3" stroke="#2D1515" strokeWidth="0.75" />
         </svg>
       </div>
 
@@ -50,7 +50,7 @@ export const Logo: React.FC<LogoProps> = ({
         </span>
         <span
           className={`font-semibold tracking-wider uppercase font-mono ${dimensions.sub} ${
-            isLight ? 'text-[#1E6BFF]' : 'text-[#60A5FA]'
+            isLight ? 'text-[#D44A4A]' : 'text-[#FFDBB0]'
           }`}
         >
           CRM & ERP

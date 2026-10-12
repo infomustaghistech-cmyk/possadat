@@ -21,12 +21,12 @@ export const NotificationsFlyout: React.FC<NotificationsFlyoutProps> = ({
         className="fixed inset-0 z-40"
         onClick={onClose}
       />
-      <div className="absolute right-0 top-12 z-50 w-80 sm:w-96 bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-150">
-        <div className="flex items-center justify-between px-4 py-3 bg-slate-50 border-b border-slate-100">
+      <div className="absolute right-0 top-12 z-50 w-80 sm:w-96 bg-white rounded-2xl shadow-2xl border border-[#F0E6DD] overflow-hidden animate-in fade-in slide-in-from-top-2 duration-150">
+        <div className="flex items-center justify-between px-4 py-3 bg-[#FFFDF9] border-b border-[#F0E6DD]">
           <div className="flex items-center gap-2">
-            <Bell className="w-4 h-4 text-[#1E6BFF]" />
+            <Bell className="w-4 h-4 text-[#D44A4A]" />
             <h4 className="text-sm font-bold text-slate-900">System Notifications</h4>
-            <span className="px-1.5 py-0.5 rounded-full text-[11px] font-bold bg-rose-100 text-rose-700">
+            <span className="px-1.5 py-0.5 rounded-full text-[11px] font-bold bg-[#FFB1B1] text-slate-900 border border-[#2D1515]/20">
               {notifications.length}
             </span>
           </div>
@@ -53,11 +53,11 @@ export const NotificationsFlyout: React.FC<NotificationsFlyoutProps> = ({
                     setCurrentTab(alert.linkTab);
                     onClose();
                   }}
-                  className="p-3.5 hover:bg-slate-50 transition-colors cursor-pointer group flex items-start gap-3"
+                  className="p-3.5 hover:bg-[#FFFDF9] transition-colors cursor-pointer group flex items-start gap-3"
                 >
                   <div
                     className={`p-2 rounded-xl shrink-0 ${
-                      isRed ? 'bg-red-100 text-red-600' : 'bg-amber-100 text-amber-600'
+                      isRed ? 'bg-red-100 text-red-600' : 'bg-[#FFFAD3] text-amber-900 border border-[#FFDBB0]'
                     }`}
                   >
                     {alert.type === 'low_stock' && <AlertTriangle className="w-4 h-4" />}
@@ -67,10 +67,10 @@ export const NotificationsFlyout: React.FC<NotificationsFlyoutProps> = ({
 
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between">
-                      <h5 className="text-xs font-bold text-slate-900 group-hover:text-[#1E6BFF] transition-colors truncate">
+                      <h5 className="text-xs font-bold text-slate-900 group-hover:text-[#D44A4A] transition-colors truncate">
                         {alert.title}
                       </h5>
-                      <ChevronRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-[#1E6BFF] transition-colors" />
+                      <ChevronRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-[#D44A4A] transition-colors" />
                     </div>
                     <p className="text-[11px] text-slate-500 mt-0.5 line-clamp-2">
                       {alert.message}

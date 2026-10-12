@@ -432,16 +432,16 @@ export const WholesaleScreen: React.FC = () => {
       </div>
 
       {/* Tabs Row */}
-      <div className="flex items-center justify-between gap-4">
-        <div className="flex p-1 bg-slate-200/80 rounded-xl gap-1">
+      <div className="flex items-center justify-between gap-4 overflow-x-auto max-w-full pb-1 no-scrollbar">
+        <div className="flex p-1 bg-slate-200/80 rounded-xl gap-1 overflow-x-auto shrink-0 no-scrollbar">
           <button
             onClick={() => {
               setActiveTab('dealers');
               setSelectedDealerId(null);
             }}
-            className={`px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all ${
+            className={`whitespace-nowrap px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-bold transition-all ${
               activeTab === 'dealers' && !selectedDealerId
-                ? 'bg-white text-[#1E6BFF] shadow-xs'
+                ? 'bg-white text-[#D44A4A] shadow-xs'
                 : 'text-slate-700 hover:text-slate-900'
             }`}
           >
@@ -452,9 +452,9 @@ export const WholesaleScreen: React.FC = () => {
               setActiveTab('dispatches');
               setSelectedDealerId(null);
             }}
-            className={`px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all ${
+            className={`whitespace-nowrap px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-bold transition-all ${
               activeTab === 'dispatches'
-                ? 'bg-white text-[#1E6BFF] shadow-xs'
+                ? 'bg-white text-[#D44A4A] shadow-xs'
                 : 'text-slate-700 hover:text-slate-900'
             }`}
           >
@@ -465,13 +465,13 @@ export const WholesaleScreen: React.FC = () => {
               setActiveTab('recoveries');
               setSelectedDealerId(null);
             }}
-            className={`px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all ${
+            className={`whitespace-nowrap px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-bold transition-all ${
               activeTab === 'recoveries'
-                ? 'bg-white text-[#1E6BFF] shadow-xs'
+                ? 'bg-white text-[#D44A4A] shadow-xs'
                 : 'text-slate-700 hover:text-slate-900'
             }`}
           >
-            Bank & Cash Recoveries ({dealerPayments.length})
+            Recoveries ({dealerPayments.length})
           </button>
         </div>
       </div>
@@ -603,8 +603,48 @@ export const WholesaleScreen: React.FC = () => {
               />
             </div>
 
-            <div className="bg-white rounded-2xl border border-slate-200/90 shadow-xs overflow-hidden">
-              <div className="overflow-x-auto">
+            <div className="bg-white rounded-2xl border border-[#F0E6DD] shadow-xs overflow-hidden">
+              {/* Mobile Dealer Cards (Matches Phone 3 in user reference screenshot) */}
+              <div className="block md:hidden divide-y divide-slate-100 p-2 space-y-2.5">
+                {filteredDealers.map((item) => (
+                  <div key={item.dealer.id} className="bg-white rounded-2xl border border-[#F0E6DD] p-4 shadow-2xs space-y-3">
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <h4 className="font-extrabold text-slate-900 text-sm">{item.dealer.name}</h4>
+                        <p className="text-[11px] text-slate-400 mt-0.5">{item.dealer.city} &bull; {item.dealer.phone}</p>
+                      </div>
+                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-slate-100 text-slate-700">
+                        {item.recoveryRate}% Rec
+                      </span>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-2 pt-1 border-t border-slate-50 text-xs">
+                      <div>
+                        <span className="text-[10px] uppercase font-bold text-slate-400 block">Balance</span>
+                        <span className={`text-sm font-black tabular-nums ${item.currentBalance > 0 ? 'text-rose-600' : 'text-slate-500'}`}>
+                          {formatPKR(item.currentBalance)}
+                        </span>
+                      </div>
+                      <div className="text-right">
+                        <span className="text-[10px] uppercase font-bold text-slate-400 block">Received</span>
+                        <span className="text-sm font-bold text-emerald-600 tabular-nums">
+                          {formatPKR(item.totalPayments)}
+                        </span>
+                      </div>
+                    </div>
+
+                    <button
+                      onClick={() => setSelectedDealerId(item.dealer.id)}
+                      className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-[#FFB1B1] via-[#FFCCB8] to-[#FFDBB0] text-slate-900 font-extrabold text-xs shadow-2xs hover:brightness-105 transition-all text-center"
+                    >
+                      View Details
+                    </button>
+                  </div>
+                ))}
+              </div>
+
+              {/* Desktop Table View */}
+              <div className="hidden md:block overflow-x-auto">
                 <table className="w-full text-left text-sm">
                   <thead className="bg-slate-100/90 text-slate-700 font-bold uppercase text-[11px] tracking-wider border-b border-slate-200">
                     <tr>
@@ -653,9 +693,9 @@ export const WholesaleScreen: React.FC = () => {
                         <td className="py-3.5 px-4 text-right">
                           <button
                             onClick={() => setSelectedDealerId(item.dealer.id)}
-                            className="px-3 py-1.5 rounded-lg bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white font-bold text-xs transition-all border border-blue-200/80 shadow-2xs"
+                            className="px-3 py-1.5 rounded-lg bg-[#FFFAD3] text-amber-900 border border-[#FFDBB0] hover:bg-[#FFB1B1] font-bold text-xs transition-all shadow-2xs"
                           >
-                            View Khata
+                            View Details
                           </button>
                         </td>
                       </tr>
@@ -737,9 +777,74 @@ export const WholesaleScreen: React.FC = () => {
           </div>
         </div>
       ) : activeTab === 'dispatches' ? (
-        /* DISPATCHES TABLE */
-        <div className="bg-white rounded-2xl border border-slate-200/90 shadow-xs overflow-hidden">
-          <div className="overflow-x-auto">
+        /* DISPATCHES TABLE & MOBILE CARDS */
+        <div className="bg-white rounded-2xl border border-[#F0E6DD] shadow-xs overflow-hidden">
+          {/* Mobile Dispatch Cards */}
+          <div className="block md:hidden divide-y divide-slate-100 p-2 space-y-2.5">
+            {dispatches.map((d) => (
+              <div key={d.id} className="bg-white rounded-2xl border border-[#F0E6DD] p-4 shadow-2xs space-y-2.5">
+                <div className="flex items-start justify-between">
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="font-extrabold text-slate-900 text-sm">{d.id}</span>
+                      <span className="text-[11px] text-slate-400">{formatDate(d.date)}</span>
+                    </div>
+                    <p className="text-xs font-bold text-slate-800 mt-0.5">{d.dealerName}</p>
+                    <p className="text-[11px] text-slate-500 mt-0.5">
+                      {d.items.map((i) => `${i.productName} (${i.qty})`).join(', ')}
+                    </p>
+                  </div>
+                  <span
+                    className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
+                      d.status === 'Paid'
+                        ? 'bg-emerald-100 text-emerald-800 border border-emerald-200'
+                        : d.status === 'Partially Paid'
+                        ? 'bg-amber-100 text-amber-800 border border-amber-200'
+                        : 'bg-[#FFFAD3] text-amber-900 border border-[#FFDBB0]'
+                    }`}
+                  >
+                    {d.status}
+                  </span>
+                </div>
+
+                <div className="flex items-center justify-between pt-1 border-t border-slate-50 text-xs">
+                  <div>
+                    <span className="text-[10px] uppercase font-bold text-slate-400 block">Total</span>
+                    <span className="font-extrabold text-slate-900 tabular-nums">{formatPKR(d.total)}</span>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-[10px] uppercase font-bold text-slate-400 block">Balance</span>
+                    <span className={`font-extrabold tabular-nums ${d.balanceAmount > 0 ? 'text-rose-600' : 'text-slate-400'}`}>
+                      {formatPKR(d.balanceAmount)}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2 pt-1">
+                  <button
+                    onClick={() => setSelectedDealerId(d.dealerId)}
+                    className="flex-1 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs"
+                  >
+                    View Khata
+                  </button>
+                  <button
+                    onClick={() => {
+                      setRetDealerId(d.dealerId);
+                      setRetDispatchId(d.id);
+                      setRetProductId(d.items[0]?.productId || '');
+                      setIsReturnModalOpen(true);
+                    }}
+                    className="py-1.5 px-3 rounded-lg border border-slate-200 hover:bg-slate-50 text-slate-600 font-bold text-xs"
+                  >
+                    Return
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Desktop Table View */}
+          <div className="hidden md:block overflow-x-auto">
             <table className="w-full text-left text-sm">
               <thead className="bg-slate-100/90 text-slate-700 font-bold uppercase text-[11px] tracking-wider border-b border-slate-200">
                 <tr>
