@@ -1,0 +1,6 @@
+{
+  "name": "Sadat Group CRM & ERP",
+  "description": "Dual-business ERP & CRM for Sadat Electronics (Retail & Workshop) and AK Traders (Wholesale Kitchen Appliances) in Karachi, Pakistan.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
