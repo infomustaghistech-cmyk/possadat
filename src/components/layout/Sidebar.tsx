@@ -138,9 +138,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
         </div>
 
         {/* Current Active Business Indicator Mini Banner */}
-        <div className="px-4 py-3 mx-3 my-2 rounded-xl bg-white/5 border border-white/10 flex items-center gap-3">
+        <div className="px-3.5 py-2.5 mx-3 my-2 rounded-2xl bg-white/[0.06] border border-white/10 flex items-center gap-3 backdrop-blur-md shadow-inner">
           <div
-            className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${
+            className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 shadow-sm ${
               currentBusiness === 'sadat'
                 ? 'bg-blue-600 text-white'
                 : 'bg-emerald-600 text-white'
@@ -153,10 +153,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
             )}
           </div>
           <div className="min-w-0">
-            <span className="text-[10px] tracking-wider uppercase text-white/50 font-semibold block">
+            <span className="text-[10px] tracking-widest uppercase text-blue-300/80 font-bold block leading-tight">
               Active Unit
             </span>
-            <p className="text-xs font-bold text-white truncate">
+            <p className="text-xs font-semibold text-white truncate tracking-tight mt-0.5">
               {currentBusiness === 'sadat' ? 'Sadat Electronics' : 'AK Traders Wholesale'}
             </p>
           </div>
@@ -172,23 +172,27 @@ export const Sidebar: React.FC<SidebarProps> = ({
               <button
                 key={item.id}
                 onClick={() => handleTabClick(item.id)}
-                className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl font-medium text-sm transition-all duration-150 ${
+                className={`w-full group flex items-center justify-between px-3.5 py-2.5 rounded-xl text-[13.5px] transition-all duration-300 ease-out ${
                   isActive
-                    ? 'bg-[#1E6BFF] text-white shadow-md shadow-blue-500/30'
-                    : 'text-white/80 hover:bg-white/10 hover:text-white'
+                    ? 'bg-gradient-to-r from-[#1E6BFF] to-[#2563EB] text-white shadow-lg shadow-blue-600/30 font-semibold'
+                    : 'text-slate-300 hover:text-white hover:bg-white/[0.07] font-normal hover:translate-x-0.5'
                 }`}
               >
                 <div className="flex items-center gap-3">
-                  <Icon className={`w-4 h-4 shrink-0 ${isActive ? 'text-white' : 'text-white/90'}`} />
-                  <span className="truncate">{item.label}</span>
+                  <Icon
+                    className={`w-[18px] h-[18px] shrink-0 transition-colors ${
+                      isActive ? 'text-white' : 'text-slate-400 group-hover:text-white'
+                    }`}
+                  />
+                  <span className="truncate tracking-[-0.01em]">{item.label}</span>
                 </div>
 
                 {item.badge && (
                   <span
-                    className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
+                    className={`text-[10px] font-semibold px-2 py-0.5 rounded-full transition-colors ${
                       isActive
                         ? 'bg-white/20 text-white'
-                        : 'bg-white/10 text-white/70'
+                        : 'bg-blue-500/15 text-blue-300 border border-blue-400/20'
                     }`}
                   >
                     {item.badge}

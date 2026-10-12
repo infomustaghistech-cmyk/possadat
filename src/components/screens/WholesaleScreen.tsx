@@ -433,16 +433,16 @@ export const WholesaleScreen: React.FC = () => {
 
       {/* Tabs Row */}
       <div className="flex items-center justify-between gap-4">
-        <div className="flex p-1 bg-slate-200/70 rounded-xl">
+        <div className="flex p-1 bg-slate-200/80 rounded-xl gap-1">
           <button
             onClick={() => {
               setActiveTab('dealers');
               setSelectedDealerId(null);
             }}
-            className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-all ${
+            className={`px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all ${
               activeTab === 'dealers' && !selectedDealerId
                 ? 'bg-white text-[#1E6BFF] shadow-xs'
-                : 'text-slate-600 hover:text-slate-900'
+                : 'text-slate-700 hover:text-slate-900'
             }`}
           >
             Dealer Ledger ({dealers.length})
@@ -452,10 +452,10 @@ export const WholesaleScreen: React.FC = () => {
               setActiveTab('dispatches');
               setSelectedDealerId(null);
             }}
-            className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-all ${
+            className={`px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all ${
               activeTab === 'dispatches'
                 ? 'bg-white text-[#1E6BFF] shadow-xs'
-                : 'text-slate-600 hover:text-slate-900'
+                : 'text-slate-700 hover:text-slate-900'
             }`}
           >
             Dispatch History ({dispatches.length})
@@ -465,10 +465,10 @@ export const WholesaleScreen: React.FC = () => {
               setActiveTab('recoveries');
               setSelectedDealerId(null);
             }}
-            className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-all ${
+            className={`px-4 py-2 rounded-lg text-xs sm:text-sm font-bold transition-all ${
               activeTab === 'recoveries'
                 ? 'bg-white text-[#1E6BFF] shadow-xs'
-                : 'text-slate-600 hover:text-slate-900'
+                : 'text-slate-700 hover:text-slate-900'
             }`}
           >
             Bank & Cash Recoveries ({dealerPayments.length})
@@ -593,67 +593,67 @@ export const WholesaleScreen: React.FC = () => {
           {/* Left Table (8 cols) */}
           <div className="lg:col-span-8 space-y-4">
             <div className="relative">
-              <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-3" />
+              <Search className="w-4 h-4 text-slate-500 absolute left-3.5 top-3.5" />
               <input
                 type="text"
                 placeholder="Search dealer by name, city, phone number..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 rounded-xl border border-[#E6ECF3] bg-white text-xs sm:text-sm font-medium focus:ring-1 focus:ring-[#1E6BFF]"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 bg-white text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:ring-2 focus:ring-[#1E6BFF] shadow-2xs"
               />
             </div>
 
-            <div className="bg-white rounded-[14px] border border-[#E6ECF3] shadow-xs overflow-hidden">
+            <div className="bg-white rounded-2xl border border-slate-200/90 shadow-xs overflow-hidden">
               <div className="overflow-x-auto">
-                <table className="w-full text-left text-xs">
-                  <thead className="bg-slate-50/80 text-slate-500 font-bold uppercase tracking-wider border-b border-slate-100">
+                <table className="w-full text-left text-sm">
+                  <thead className="bg-slate-100/90 text-slate-700 font-bold uppercase text-[11px] tracking-wider border-b border-slate-200">
                     <tr>
-                      <th className="py-3 px-4">Dealer Name</th>
-                      <th className="py-3 px-4 text-right">Opening Bal</th>
-                      <th className="py-3 px-4 text-right">Total Dispatch</th>
-                      <th className="py-3 px-4 text-right">Received</th>
-                      <th className="py-3 px-4 text-right">Balance</th>
-                      <th className="py-3 px-4 text-center">Recovery %</th>
-                      <th className="py-3 px-4 text-right">Action</th>
+                      <th className="py-3.5 px-4 font-bold text-slate-800">Dealer Name</th>
+                      <th className="py-3.5 px-4 text-right font-bold text-slate-800">Opening Bal</th>
+                      <th className="py-3.5 px-4 text-right font-bold text-slate-800">Total Dispatch</th>
+                      <th className="py-3.5 px-4 text-right font-bold text-slate-800">Received</th>
+                      <th className="py-3.5 px-4 text-right font-bold text-slate-800">Balance</th>
+                      <th className="py-3.5 px-4 text-center font-bold text-slate-800">Recovery %</th>
+                      <th className="py-3.5 px-4 text-right font-bold text-slate-800">Action</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100 font-medium">
                     {filteredDealers.map((item) => (
                       <tr
                         key={item.dealer.id}
-                        className="hover:bg-slate-50/70 transition-colors"
+                        className="hover:bg-blue-50/40 transition-colors"
                       >
-                        <td className="py-3 px-4">
-                          <p className="font-bold text-slate-900">{item.dealer.name}</p>
-                          <p className="text-[11px] text-slate-400">
+                        <td className="py-3.5 px-4">
+                          <p className="font-bold text-slate-900 text-sm">{item.dealer.name}</p>
+                          <p className="text-xs text-slate-500 font-normal mt-0.5">
                             {item.dealer.city} • {item.dealer.phone}
                           </p>
                         </td>
-                        <td className="py-3 px-4 text-right text-slate-500 tabular-nums">
+                        <td className="py-3.5 px-4 text-right font-semibold text-slate-700 tabular-nums">
                           {formatPKR(item.openingBalance)}
                         </td>
-                        <td className="py-3 px-4 text-right font-bold text-slate-800 tabular-nums">
+                        <td className="py-3.5 px-4 text-right font-bold text-slate-900 tabular-nums">
                           {formatPKR(item.totalDispatch)}
                         </td>
-                        <td className="py-3 px-4 text-right font-bold text-emerald-600 tabular-nums">
+                        <td className="py-3.5 px-4 text-right font-bold text-emerald-600 tabular-nums">
                           {formatPKR(item.totalPayments)}
                         </td>
-                        <td className="py-3 px-4 text-right font-extrabold tabular-nums">
+                        <td className="py-3.5 px-4 text-right font-black tabular-nums">
                           <span
-                            className={item.currentBalance > 0 ? 'text-rose-600' : 'text-slate-400'}
+                            className={item.currentBalance > 0 ? 'text-rose-600 font-black' : 'text-slate-500 font-semibold'}
                           >
                             {formatPKR(item.currentBalance)}
                           </span>
                         </td>
-                        <td className="py-3 px-4 text-center">
-                          <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 text-slate-700">
+                        <td className="py-3.5 px-4 text-center">
+                          <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-800 border border-slate-200">
                             {item.recoveryRate}%
                           </span>
                         </td>
-                        <td className="py-3 px-4 text-right">
+                        <td className="py-3.5 px-4 text-right">
                           <button
                             onClick={() => setSelectedDealerId(item.dealer.id)}
-                            className="px-2.5 py-1 rounded-lg bg-blue-50 text-[#1E6BFF] hover:bg-blue-100 font-bold text-[11px] transition-colors"
+                            className="px-3 py-1.5 rounded-lg bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white font-bold text-xs transition-all border border-blue-200/80 shadow-2xs"
                           >
                             View Khata
                           </button>
@@ -738,57 +738,57 @@ export const WholesaleScreen: React.FC = () => {
         </div>
       ) : activeTab === 'dispatches' ? (
         /* DISPATCHES TABLE */
-        <div className="bg-white rounded-[14px] border border-[#E6ECF3] shadow-xs overflow-hidden">
+        <div className="bg-white rounded-2xl border border-slate-200/90 shadow-xs overflow-hidden">
           <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs">
-              <thead className="bg-slate-50/80 text-slate-500 font-bold uppercase tracking-wider border-b border-slate-100">
+            <table className="w-full text-left text-sm">
+              <thead className="bg-slate-100/90 text-slate-700 font-bold uppercase text-[11px] tracking-wider border-b border-slate-200">
                 <tr>
-                  <th className="py-3 px-4">Dispatch #</th>
-                  <th className="py-3 px-4">Date</th>
-                  <th className="py-3 px-4">Dealer</th>
-                  <th className="py-3 px-4">Items</th>
-                  <th className="py-3 px-4 text-right">Total</th>
-                  <th className="py-3 px-4 text-right">Paid Now</th>
-                  <th className="py-3 px-4 text-right">Balance</th>
-                  <th className="py-3 px-4 text-center">Status</th>
-                  <th className="py-3 px-4 text-right">Action</th>
+                  <th className="py-3.5 px-4 font-bold text-slate-800">Dispatch #</th>
+                  <th className="py-3.5 px-4 font-bold text-slate-800">Date</th>
+                  <th className="py-3.5 px-4 font-bold text-slate-800">Dealer</th>
+                  <th className="py-3.5 px-4 font-bold text-slate-800">Items</th>
+                  <th className="py-3.5 px-4 text-right font-bold text-slate-800">Total</th>
+                  <th className="py-3.5 px-4 text-right font-bold text-slate-800">Paid Now</th>
+                  <th className="py-3.5 px-4 text-right font-bold text-slate-800">Balance</th>
+                  <th className="py-3.5 px-4 text-center font-bold text-slate-800">Status</th>
+                  <th className="py-3.5 px-4 text-right font-bold text-slate-800">Action</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100 font-medium">
                 {dispatches.map((d) => (
-                  <tr key={d.id} className="hover:bg-slate-50/70 transition-colors">
-                    <td className="py-3 px-4 font-bold text-slate-900">{d.id}</td>
-                    <td className="py-3 px-4 text-slate-500">{formatDate(d.date)}</td>
-                    <td className="py-3 px-4 font-bold text-slate-900">{d.dealerName}</td>
-                    <td className="py-3 px-4 text-slate-600">
+                  <tr key={d.id} className="hover:bg-blue-50/40 transition-colors">
+                    <td className="py-3.5 px-4 font-bold text-slate-900">{d.id}</td>
+                    <td className="py-3.5 px-4 text-slate-600 font-normal">{formatDate(d.date)}</td>
+                    <td className="py-3.5 px-4 font-bold text-slate-900">{d.dealerName}</td>
+                    <td className="py-3.5 px-4 text-slate-700">
                       {d.items.map((i) => `${i.productName} (${i.qty})`).join(', ')}
                     </td>
-                    <td className="py-3 px-4 text-right font-extrabold text-slate-900 tabular-nums">
+                    <td className="py-3.5 px-4 text-right font-black text-slate-900 tabular-nums">
                       {formatPKR(d.total)}
                     </td>
-                    <td className="py-3 px-4 text-right text-emerald-600 font-bold tabular-nums">
+                    <td className="py-3.5 px-4 text-right text-emerald-600 font-bold tabular-nums">
                       {formatPKR(d.amountPaidNow)}
                     </td>
-                    <td className="py-3 px-4 text-right font-bold text-rose-600 tabular-nums">
+                    <td className="py-3.5 px-4 text-right font-black text-rose-600 tabular-nums">
                       {formatPKR(d.balanceAmount)}
                     </td>
-                    <td className="py-3 px-4 text-center">
+                    <td className="py-3.5 px-4 text-center">
                       <span
-                        className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${
+                        className={`px-2.5 py-1 rounded-full text-xs font-bold ${
                           d.status === 'Paid'
-                            ? 'bg-emerald-100 text-emerald-700'
+                            ? 'bg-emerald-100 text-emerald-800 border border-emerald-200'
                             : d.status === 'Partially Paid'
-                            ? 'bg-amber-100 text-amber-700'
-                            : 'bg-blue-100 text-blue-700'
+                            ? 'bg-amber-100 text-amber-800 border border-amber-200'
+                            : 'bg-blue-100 text-blue-800 border border-blue-200'
                         }`}
                       >
                         {d.status}
                       </span>
                     </td>
-                    <td className="py-3 px-4 text-right space-x-1.5">
+                    <td className="py-3.5 px-4 text-right space-x-1.5">
                       <button
                         onClick={() => setSelectedDealerId(d.dealerId)}
-                        className="px-2 py-1 rounded-lg bg-blue-50 text-[#1E6BFF] hover:bg-blue-100 font-bold text-[11px]"
+                        className="px-2.5 py-1 rounded-lg bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white font-bold text-xs transition-colors border border-blue-200/80"
                       >
                         Khata
                       </button>
@@ -799,7 +799,7 @@ export const WholesaleScreen: React.FC = () => {
                           setRetProductId(d.items[0]?.productId || '');
                           setIsReturnModalOpen(true);
                         }}
-                        className="px-2 py-1 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 font-bold text-[11px]"
+                        className="px-2.5 py-1 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 font-bold text-xs transition-colors border border-slate-200"
                       >
                         Return
                       </button>

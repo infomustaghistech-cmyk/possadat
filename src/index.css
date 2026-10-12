@@ -2,13 +2,40 @@
 
 @layer base {
   body {
-    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    color: #0f172a;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
   
   /* Number tabular alignment */
   .tabular-nums {
     font-variant-numeric: tabular-nums;
   }
+}
+
+/* Universal Silky Smooth Transitions & Micro-Interactions */
+html {
+  scroll-behavior: smooth;
+}
+
+button, a, input, select, textarea, [role="button"] {
+  transition: all 0.32s cubic-bezier(0.25, 1, 0.35, 1);
+}
+
+button:active:not(:disabled), [role="button"]:active:not(:disabled) {
+  transform: scale(0.985);
+  transition-duration: 0.15s;
+}
+
+tr {
+  transition: background-color 0.25s cubic-bezier(0.25, 1, 0.35, 1);
+}
+
+/* Smooth modal & popup backdrop */
+.dialog-overlay, .modal-backdrop {
+  transition: opacity 0.35s cubic-bezier(0.25, 1, 0.35, 1);
 }
 
 /* Custom scrollbars */

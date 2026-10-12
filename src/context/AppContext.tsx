@@ -228,17 +228,18 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   // Auth functions
   const login = (username: string, pass: string, remember: boolean): boolean => {
-    if (username.trim().toLowerCase() === 'owner' && pass === 'demo123') {
+    const u = username.trim().toLowerCase();
+    if ((u === 'sadat' || u === 'owner') && pass === 'demo123') {
       setIsAuthenticated(true);
-      setCurrentUser('owner');
+      setCurrentUser(u === 'sadat' ? 'sadat' : 'owner');
       setHasSelectedBusiness(false);
-      localStorage.setItem(STORAGE_PREFIX + 'user', 'owner');
+      localStorage.setItem(STORAGE_PREFIX + 'user', u);
       if (remember) {
         localStorage.setItem(STORAGE_PREFIX + 'auth', 'true');
       } else {
         sessionStorage.setItem(STORAGE_PREFIX + 'auth', 'true');
       }
-      addToast('Welcome back, Owner! Signed in successfully.');
+      addToast(`Welcome back, ${u === 'sadat' ? 'Sadat' : 'Owner'}! Signed in successfully.`);
       return true;
     }
     return false;

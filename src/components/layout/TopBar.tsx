@@ -227,14 +227,14 @@ export const TopBar: React.FC<TopBarProps> = ({ onMenuClick }) => {
           >
             <div className="text-right hidden sm:block">
               <span className="text-xs font-bold text-slate-800 block leading-tight">
-                owner
+                Sadat
               </span>
               <span className="text-[10px] text-slate-500 font-medium block">
                 Administrator
               </span>
             </div>
             <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-[#1E6BFF] to-[#60A5FA] text-white flex items-center justify-center font-bold text-xs shadow-2xs">
-              OW
+              SD
             </div>
             <ChevronDown className="w-3.5 h-3.5 text-slate-400 hidden sm:block" />
           </button>
@@ -247,8 +247,8 @@ export const TopBar: React.FC<TopBarProps> = ({ onMenuClick }) => {
               />
               <div className="absolute right-0 mt-2 w-52 bg-white rounded-2xl shadow-xl border border-slate-200 py-1.5 z-50 animate-in fade-in zoom-in-95 duration-100">
                 <div className="px-3.5 py-2.5 border-b border-slate-100">
-                  <p className="text-xs font-bold text-slate-900">Karachi HQ Owner</p>
-                  <p className="text-[11px] text-slate-500">owner@sadatgroup.pk</p>
+                  <p className="text-xs font-bold text-slate-900">Sadat (Owner)</p>
+                  <p className="text-[11px] text-slate-500">sadat@sadatgroup.pk</p>
                 </div>
                 <div className="px-3.5 py-2 border-b border-slate-100 text-[11px] text-slate-500">
                   Current Session: <span className="font-semibold text-slate-700 capitalize">{currentBusiness} Unit</span>
