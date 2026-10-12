@@ -179,7 +179,7 @@ export const CustomersDealersScreen: React.FC = () => {
 
       {activeTab === 'customers' ? (
         /* CUSTOMERS VIEW */
-        <div className="bg-white rounded-[14px] border border-[#F0E6DD] shadow-xs overflow-hidden">
+        <div className="bg-white rounded-[14px] border border-slate-200 shadow-xs overflow-hidden">
           {/* Mobile Customer Cards */}
           <div className="block md:hidden divide-y divide-slate-100">
             {filteredCustomers.length === 0 ? (
@@ -214,7 +214,7 @@ export const CustomersDealersScreen: React.FC = () => {
                             setBalanceCustomer(c);
                             setReceiveAmount(bal);
                           }}
-                          className="flex-1 py-1.5 rounded-lg bg-[#FFFAD3] text-amber-900 border border-[#FFDBB0] font-bold text-[11px]"
+                          className="flex-1 py-1.5 rounded-lg bg-amber-50 text-amber-800 border border-amber-200 font-bold text-[11px]"
                         >
                           Receive
                         </button>
@@ -316,13 +316,13 @@ export const CustomersDealersScreen: React.FC = () => {
         </div>
       ) : (
         /* DEALERS VIEW */
-        <div className="bg-white rounded-[14px] border border-[#F0E6DD] shadow-xs overflow-hidden">
-          {/* Mobile Dealer Cards (Matches Phone 3 in user reference screenshot) */}
+        <div className="bg-white rounded-[14px] border border-slate-200 shadow-xs overflow-hidden">
+          {/* Mobile Dealer Cards */}
           <div className="block md:hidden divide-y divide-slate-100 p-2 space-y-2.5">
             {filteredDealers.map((d) => {
               const bal = getDealerBalance(d.id);
               return (
-                <div key={d.id} className="bg-white rounded-2xl border border-[#F0E6DD] p-4 shadow-2xs space-y-3">
+                <div key={d.id} className="bg-white rounded-2xl border border-slate-200 p-4 shadow-2xs space-y-3">
                   <div className="flex items-start justify-between">
                     <div>
                       <h4 className="font-extrabold text-slate-900 text-sm">{d.name}</h4>
@@ -350,7 +350,7 @@ export const CustomersDealersScreen: React.FC = () => {
                     onClick={() => {
                       setCurrentTab('wholesale');
                     }}
-                    className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-[#FFB1B1] via-[#FFCCB8] to-[#FFDBB0] text-slate-900 font-extrabold text-xs shadow-2xs hover:brightness-105 transition-all text-center"
+                    className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-[#1E5071] via-[#245D83] to-[#2C6D98] text-white font-bold text-xs shadow-2xs hover:brightness-105 transition-all text-center"
                   >
                     View Details
                   </button>

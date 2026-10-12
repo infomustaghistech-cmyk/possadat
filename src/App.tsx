@@ -60,7 +60,7 @@ const MainAppLayout: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-          className="min-h-screen bg-[#FDFBF7] flex text-slate-800 antialiased font-sans selection:bg-[#FFCCB8] selection:text-slate-900 overflow-x-hidden w-full max-w-full"
+          className="min-h-screen bg-[#F4F8FA] flex text-slate-800 antialiased font-sans selection:bg-[#1E5071] selection:text-white overflow-x-hidden w-full max-w-full"
         >
           {/* Sidebar Navigation */}
           <Sidebar

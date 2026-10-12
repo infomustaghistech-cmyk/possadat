@@ -1,19 +1,31 @@
 @import "tailwindcss";
 
 @theme {
-  --color-palette-cream: #FFFAD3;
-  --color-palette-peach: #FFDBB0;
-  --color-palette-blush: #FFCCB8;
-  --color-palette-coral: #FFB1B1;
-  --color-palette-warmbg: #FDFBF7;
+  --color-brand-primary: #1E5071;
+  --color-brand-primary-dark: #143B55;
+  --color-brand-secondary: #2C6D98;
+  --color-brand-light: #EBF2F7;
+  --color-brand-accent: #FFFFFF;
+  --color-brand-border: #D8E5EE;
+  --color-brand-bg: #F4F8FA;
+  --color-palette-cream: #EBF2F7;
+  --color-palette-peach: #D8E5EE;
+  --color-palette-blush: #2C6D98;
+  --color-palette-coral: #1E5071;
+  --color-palette-warmbg: #F4F8FA;
 }
 
 :root {
-  --palette-cream: #FFFAD3;
-  --palette-peach: #FFDBB0;
-  --palette-blush: #FFCCB8;
-  --palette-coral: #FFB1B1;
-  --bg-warm: #FDFBF7;
+  --palette-cream: #EBF2F7;
+  --palette-peach: #D8E5EE;
+  --palette-blush: #2C6D98;
+  --palette-coral: #1E5071;
+  --bg-warm: #F4F8FA;
+  --brand-primary: #1E5071;
+  --brand-primary-dark: #143B55;
+  --brand-secondary: #2C6D98;
+  --brand-light: #EBF2F7;
+  --brand-accent: #FFFFFF;
 }
 
 @layer base {
@@ -24,8 +36,8 @@
 
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    color: #1e1b18;
-    background-color: #FDFBF7;
+    color: #0F2435;
+    background-color: #F4F8FA;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
@@ -60,7 +72,7 @@ tr {
   transition: opacity 0.35s cubic-bezier(0.25, 1, 0.35, 1);
 }
 
-/* Custom scrollbars with warm palette accents */
+/* Custom scrollbars with brand blue accents */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -71,12 +83,12 @@ tr {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #FFCCB8;
+  background: #A8C5DA;
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #FFB1B1;
+  background: #1E5071;
 }
 
 /* Utilities to completely hide scrollbars while keeping touch & wheel scrolling */
@@ -95,76 +107,78 @@ tr {
 
 /* Palette button & glow utilities */
 .bg-palette-gradient {
-  background: linear-gradient(135deg, #FFB1B1 0%, #FFCCB8 50%, #FFDBB0 100%);
+  background: linear-gradient(135deg, #1E5071 0%, #25628A 50%, #2C6D98 100%);
 }
 
 .bg-palette-gradient-warm {
-  background: linear-gradient(135deg, #FFDBB0 0%, #FFFAD3 100%);
+  background: linear-gradient(135deg, #25628A 0%, #3479A7 100%);
 }
 
 .bg-palette-gradient-rose {
-  background: linear-gradient(135deg, #FFB1B1 0%, #FFCCB8 100%);
+  background: linear-gradient(135deg, #1E5071 0%, #2C6D98 100%);
 }
 
-/* Global Palette Theme Overrides (#FFFAD3, #FFDBB0, #FFCCB8, #FFB1B1) */
+/* Global Theme Overrides based on Sadat Electronics Logo (#1E5071) */
 .bg-\[\#1E6BFF\] {
-  background: linear-gradient(135deg, #FFB1B1 0%, #FFCCB8 50%, #FFDBB0 100%) !important;
-  color: #2D1515 !important;
+  background: linear-gradient(135deg, #1E5071 0%, #25628A 50%, #2C6D98 100%) !important;
+  color: #FFFFFF !important;
 }
 
 .bg-\[\#1E6BFF\]:hover,
 button.bg-\[\#1E6BFF\]:hover {
-  filter: brightness(1.05) !important;
+  filter: brightness(1.08) !important;
 }
 
 .text-\[\#1E6BFF\] {
-  color: #D44A4A !important;
+  color: #1E5071 !important;
 }
 
 .border-\[\#1E6BFF\] {
-  border-color: #FFB1B1 !important;
+  border-color: #1E5071 !important;
 }
 
 .focus\:ring-\[\#1E6BFF\]:focus,
 .focus-within\:ring-\[\#1E6BFF\]:focus-within {
-  --tw-ring-color: #FFB1B1 !important;
-  border-color: #FFB1B1 !important;
+  --tw-ring-color: #1E5071 !important;
+  border-color: #1E5071 !important;
 }
 
-/* Cool grey/blue container & border overrides to warm cream/ivory */
-.bg-\[\#F4F7FB\] {
-  background-color: #FDFBF7 !important;
+/* Container & border overrides to clean light blue-gray */
+.bg-\[\#F4F7FB\],
+.bg-\[\#FDFBF7\] {
+  background-color: #F4F8FA !important;
 }
 
-.border-\[\#E6ECF3\] {
-  border-color: #F0E6DD !important;
+.border-\[\#E6ECF3\],
+.border-\[\#F0E6DD\] {
+  border-color: #D8E5EE !important;
 }
 
-/* Soft light blue badges & tags transformed into warm palette tones */
+/* Soft badges & tags in brand tones */
 .bg-blue-50 {
-  background-color: #FFFAD3 !important;
-  color: #572c05 !important;
+  background-color: #EBF2F7 !important;
+  color: #1E5071 !important;
 }
 
 .bg-blue-100 {
-  background-color: #FFDBB0 !important;
-  color: #431407 !important;
+  background-color: #D8E5EE !important;
+  color: #143B55 !important;
 }
 
 .text-blue-600,
 .text-blue-700,
 .text-blue-500 {
-  color: #D44A4A !important;
+  color: #1E5071 !important;
 }
 
 .border-blue-100,
 .border-blue-200,
 .border-blue-300 {
-  border-color: #FFCCB8 !important;
+  border-color: #C3D9E8 !important;
 }
 
 .shadow-blue-500\/25,
 .shadow-blue-500\/20,
 .shadow-blue-600\/30 {
-  --tw-shadow-color: rgba(255, 177, 177, 0.35) !important;
+  --tw-shadow-color: rgba(30, 80, 113, 0.25) !important;
 }

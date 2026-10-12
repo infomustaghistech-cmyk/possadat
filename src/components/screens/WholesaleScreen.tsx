@@ -441,7 +441,7 @@ export const WholesaleScreen: React.FC = () => {
             }}
             className={`whitespace-nowrap px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-bold transition-all ${
               activeTab === 'dealers' && !selectedDealerId
-                ? 'bg-white text-[#D44A4A] shadow-xs'
+                ? 'bg-white text-[#1E5071] shadow-xs'
                 : 'text-slate-700 hover:text-slate-900'
             }`}
           >
@@ -454,7 +454,7 @@ export const WholesaleScreen: React.FC = () => {
             }}
             className={`whitespace-nowrap px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-bold transition-all ${
               activeTab === 'dispatches'
-                ? 'bg-white text-[#D44A4A] shadow-xs'
+                ? 'bg-white text-[#1E5071] shadow-xs'
                 : 'text-slate-700 hover:text-slate-900'
             }`}
           >
@@ -467,7 +467,7 @@ export const WholesaleScreen: React.FC = () => {
             }}
             className={`whitespace-nowrap px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs sm:text-sm font-bold transition-all ${
               activeTab === 'recoveries'
-                ? 'bg-white text-[#D44A4A] shadow-xs'
+                ? 'bg-white text-[#1E5071] shadow-xs'
                 : 'text-slate-700 hover:text-slate-900'
             }`}
           >
@@ -603,11 +603,11 @@ export const WholesaleScreen: React.FC = () => {
               />
             </div>
 
-            <div className="bg-white rounded-2xl border border-[#F0E6DD] shadow-xs overflow-hidden">
-              {/* Mobile Dealer Cards (Matches Phone 3 in user reference screenshot) */}
+            <div className="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden">
+              {/* Mobile Dealer Cards */}
               <div className="block md:hidden divide-y divide-slate-100 p-2 space-y-2.5">
                 {filteredDealers.map((item) => (
-                  <div key={item.dealer.id} className="bg-white rounded-2xl border border-[#F0E6DD] p-4 shadow-2xs space-y-3">
+                  <div key={item.dealer.id} className="bg-white rounded-2xl border border-slate-200 p-4 shadow-2xs space-y-3">
                     <div className="flex items-start justify-between">
                       <div>
                         <h4 className="font-extrabold text-slate-900 text-sm">{item.dealer.name}</h4>
@@ -635,7 +635,7 @@ export const WholesaleScreen: React.FC = () => {
 
                     <button
                       onClick={() => setSelectedDealerId(item.dealer.id)}
-                      className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-[#FFB1B1] via-[#FFCCB8] to-[#FFDBB0] text-slate-900 font-extrabold text-xs shadow-2xs hover:brightness-105 transition-all text-center"
+                      className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-[#1E5071] via-[#245D83] to-[#2C6D98] text-white font-bold text-xs shadow-2xs hover:brightness-105 transition-all text-center"
                     >
                       View Details
                     </button>
@@ -693,7 +693,7 @@ export const WholesaleScreen: React.FC = () => {
                         <td className="py-3.5 px-4 text-right">
                           <button
                             onClick={() => setSelectedDealerId(item.dealer.id)}
-                            className="px-3 py-1.5 rounded-lg bg-[#FFFAD3] text-amber-900 border border-[#FFDBB0] hover:bg-[#FFB1B1] font-bold text-xs transition-all shadow-2xs"
+                            className="px-3 py-1.5 rounded-lg bg-[#EBF2F7] text-[#1E5071] border border-[#D8E5EE] hover:bg-[#1E5071] hover:text-white font-bold text-xs transition-all shadow-2xs"
                           >
                             View Details
                           </button>
@@ -778,11 +778,11 @@ export const WholesaleScreen: React.FC = () => {
         </div>
       ) : activeTab === 'dispatches' ? (
         /* DISPATCHES TABLE & MOBILE CARDS */
-        <div className="bg-white rounded-2xl border border-[#F0E6DD] shadow-xs overflow-hidden">
+        <div className="bg-white rounded-2xl border border-slate-200 shadow-xs overflow-hidden">
           {/* Mobile Dispatch Cards */}
           <div className="block md:hidden divide-y divide-slate-100 p-2 space-y-2.5">
             {dispatches.map((d) => (
-              <div key={d.id} className="bg-white rounded-2xl border border-[#F0E6DD] p-4 shadow-2xs space-y-2.5">
+              <div key={d.id} className="bg-white rounded-2xl border border-slate-200 p-4 shadow-2xs space-y-2.5">
                 <div className="flex items-start justify-between">
                   <div>
                     <div className="flex items-center gap-2">
@@ -800,7 +800,7 @@ export const WholesaleScreen: React.FC = () => {
                         ? 'bg-emerald-100 text-emerald-800 border border-emerald-200'
                         : d.status === 'Partially Paid'
                         ? 'bg-amber-100 text-amber-800 border border-amber-200'
-                        : 'bg-[#FFFAD3] text-amber-900 border border-[#FFDBB0]'
+                        : 'bg-[#EBF2F7] text-[#1E5071] border border-[#D8E5EE]'
                     }`}
                   >
                     {d.status}

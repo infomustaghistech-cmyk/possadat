@@ -122,12 +122,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
       {/* Main Sidebar Container */}
       <aside
-        className={`fixed top-0 bottom-0 left-0 z-40 w-64 bg-gradient-to-b from-[#1C1715] to-[#251D1A] text-white flex flex-col transition-transform duration-300 ease-in-out lg:translate-x-0 ${
+        className={`fixed top-0 bottom-0 left-0 z-40 w-64 bg-gradient-to-b from-[#0E273C] via-[#13334F] to-[#1A4264] text-white flex flex-col transition-transform duration-300 ease-in-out lg:translate-x-0 ${
           isMobileOpen ? 'translate-x-0' : '-translate-x-full'
-        } shadow-2xl border-r border-[#382A26]`}
+        } shadow-2xl border-r border-[#1B4365]/60`}
       >
         {/* Top Logo & Close Button */}
-        <div className="p-5 flex items-center justify-between border-b border-[#382A26]">
+        <div className="p-5 flex items-center justify-between border-b border-white/10">
           <Logo variant="dark" size="md" />
           <button
             onClick={() => setIsMobileOpen(false)}
@@ -138,12 +138,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
         </div>
 
         {/* Current Active Business Indicator Mini Banner */}
-        <div className="px-3.5 py-2.5 mx-3 my-2 rounded-2xl bg-white/[0.04] border border-[#382A26] flex items-center gap-3 backdrop-blur-md shadow-inner">
+        <div className="px-3.5 py-2.5 mx-3 my-2 rounded-2xl bg-white/[0.06] border border-white/10 flex items-center gap-3 backdrop-blur-md shadow-inner">
           <div
             className={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 shadow-sm ${
               currentBusiness === 'sadat'
-                ? 'bg-gradient-to-tr from-[#FFB1B1] to-[#FFCCB8] text-[#2D1515]'
-                : 'bg-gradient-to-tr from-[#FFDBB0] to-[#FFFAD3] text-[#2D1515]'
+                ? 'bg-gradient-to-tr from-[#1E5071] to-[#3683B8] text-white'
+                : 'bg-gradient-to-tr from-[#0F766E] to-[#14B8A6] text-white'
             }`}
           >
             {currentBusiness === 'sadat' ? (
@@ -153,7 +153,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             )}
           </div>
           <div className="min-w-0">
-            <span className="text-[10px] tracking-widest uppercase text-[#FFDBB0] font-bold block leading-tight">
+            <span className="text-[10px] tracking-widest uppercase text-[#8EC5EA] font-bold block leading-tight">
               Active Unit
             </span>
             <p className="text-xs font-semibold text-white truncate tracking-tight mt-0.5">
@@ -174,14 +174,14 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 onClick={() => handleTabClick(item.id)}
                 className={`w-full group flex items-center justify-between px-3.5 py-2.5 rounded-xl text-[13.5px] transition-all duration-300 ease-out ${
                   isActive
-                    ? 'bg-gradient-to-r from-[#FFB1B1] via-[#FFCCB8] to-[#FFDBB0] text-slate-900 shadow-lg shadow-[#FFB1B1]/20 font-bold'
-                    : 'text-stone-300 hover:text-white hover:bg-white/[0.07] font-normal hover:translate-x-0.5'
+                    ? 'bg-gradient-to-r from-[#1E5071] via-[#245D83] to-[#2E73A1] text-white shadow-lg shadow-[#0E273C]/40 font-semibold'
+                    : 'text-slate-300 hover:text-white hover:bg-white/[0.08] font-normal hover:translate-x-0.5'
                 }`}
               >
                 <div className="flex items-center gap-3">
                   <Icon
                     className={`w-[18px] h-[18px] shrink-0 transition-colors ${
-                      isActive ? 'text-slate-900' : 'text-stone-400 group-hover:text-[#FFDBB0]'
+                      isActive ? 'text-white' : 'text-slate-400 group-hover:text-[#8EC5EA]'
                     }`}
                   />
                   <span className="truncate tracking-[-0.01em]">{item.label}</span>
@@ -191,8 +191,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   <span
                     className={`text-[10px] font-semibold px-2 py-0.5 rounded-full transition-colors ${
                       isActive
-                        ? 'bg-white/40 text-slate-900'
-                        : 'bg-[#FFFAD3]/15 text-[#FFFAD3] border border-[#FFDBB0]/30'
+                        ? 'bg-white/20 text-white'
+                        : 'bg-[#8EC5EA]/15 text-[#A8D4F2] border border-[#8EC5EA]/30'
                     }`}
                   >
                     {item.badge}
@@ -204,10 +204,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
         </nav>
 
         {/* Bottom Area: Reset Demo Data */}
-        <div className="p-3 border-t border-[#382A26] bg-black/10">
+        <div className="p-3 border-t border-white/10 bg-black/10">
           <button
             onClick={() => setIsResetModalOpen(true)}
-            className="w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl text-[#FFB1B1] hover:text-[#FFFAD3] hover:bg-[#FFB1B1]/10 font-semibold text-xs transition-colors border border-[#FFB1B1]/20"
+            className="w-full flex items-center justify-center gap-2 px-3 py-2.5 rounded-xl text-rose-400 hover:text-rose-300 hover:bg-rose-500/15 font-semibold text-xs transition-colors border border-rose-500/20"
           >
             <RotateCcw className="w-3.5 h-3.5" />
             <span>Reset Demo Data</span>

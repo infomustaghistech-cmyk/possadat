@@ -38,7 +38,7 @@ export const TopBar: React.FC<TopBarProps> = ({ onMenuClick }) => {
     MONTH_OPTIONS.find((m) => m.key === selectedMonth)?.label || selectedMonth;
 
   return (
-    <header className="sticky top-0 z-30 h-14 sm:h-16 bg-[#FFFDF9]/95 backdrop-blur-md border-b border-[#F0E6DD] px-2.5 sm:px-4 md:px-6 flex items-center justify-between shadow-xs w-full max-w-full">
+    <header className="sticky top-0 z-30 h-14 sm:h-16 bg-white/95 backdrop-blur-md border-b border-slate-200 px-2.5 sm:px-4 md:px-6 flex items-center justify-between shadow-xs w-full max-w-full">
       {/* Left: Mobile hamburger & Active Business Switcher */}
       <div className="flex items-center gap-1.5 sm:gap-3 min-w-0 shrink">
         <button
@@ -58,13 +58,13 @@ export const TopBar: React.FC<TopBarProps> = ({ onMenuClick }) => {
               setIsNotificationsOpen(false);
               setIsUserMenuOpen(false);
             }}
-            className="flex items-center gap-1.5 sm:gap-2.5 px-2 sm:px-3 py-1.5 rounded-xl border border-[#F0E6DD] hover:border-[#FFCCB8] bg-white hover:bg-[#FFFDF9] transition-all text-slate-800 text-xs sm:text-sm font-semibold shadow-2xs min-w-0"
+            className="flex items-center gap-1.5 sm:gap-2.5 px-2 sm:px-3 py-1.5 rounded-xl border border-slate-200 hover:border-[#1E5071]/40 bg-white hover:bg-slate-50 transition-all text-slate-800 text-xs sm:text-sm font-semibold shadow-2xs min-w-0"
           >
             <div
               className={`w-5 h-5 sm:w-6 sm:h-6 rounded-lg flex items-center justify-center shrink-0 font-bold ${
                 currentBusiness === 'sadat'
-                  ? 'bg-gradient-to-tr from-[#FFB1B1] to-[#FFCCB8] text-[#2D1515]'
-                  : 'bg-gradient-to-tr from-[#FFDBB0] to-[#FFFAD3] text-[#2D1515]'
+                  ? 'bg-gradient-to-tr from-[#1E5071] to-[#3683B8] text-white'
+                  : 'bg-gradient-to-tr from-[#0F766E] to-[#14B8A6] text-white'
               }`}
             >
               {currentBusiness === 'sadat' ? (
@@ -85,7 +85,7 @@ export const TopBar: React.FC<TopBarProps> = ({ onMenuClick }) => {
                 className="fixed inset-0 z-40"
                 onClick={() => setIsBizMenuOpen(false)}
               />
-              <div className="absolute left-0 mt-2 w-64 bg-white rounded-2xl shadow-xl border border-[#F0E6DD] py-1.5 z-50 animate-in fade-in zoom-in-95 duration-100">
+              <div className="absolute left-0 mt-2 w-64 bg-white rounded-2xl shadow-xl border border-slate-200 py-1.5 z-50 animate-in fade-in zoom-in-95 duration-100">
                 <div className="px-3.5 py-2 border-b border-slate-100 text-[10px] font-bold text-slate-400 uppercase tracking-wider">
                   Switch Business Unit
                 </div>
@@ -94,10 +94,10 @@ export const TopBar: React.FC<TopBarProps> = ({ onMenuClick }) => {
                     setCurrentBusiness('sadat');
                     setIsBizMenuOpen(false);
                   }}
-                  className="w-full flex items-center justify-between px-3.5 py-2.5 hover:bg-[#FFFDF9] transition-colors text-left"
+                  className="w-full flex items-center justify-between px-3.5 py-2.5 hover:bg-slate-50 transition-colors text-left"
                 >
                   <div className="flex items-center gap-2.5">
-                    <div className="w-7 h-7 rounded-lg bg-[#FFB1B1]/20 text-[#D44A4A] flex items-center justify-center">
+                    <div className="w-7 h-7 rounded-lg bg-[#1E5071]/10 text-[#1E5071] flex items-center justify-center">
                       <Store className="w-4 h-4" />
                     </div>
                     <div>
@@ -106,7 +106,7 @@ export const TopBar: React.FC<TopBarProps> = ({ onMenuClick }) => {
                     </div>
                   </div>
                   {currentBusiness === 'sadat' && (
-                    <Check className="w-4 h-4 text-[#D44A4A]" />
+                    <Check className="w-4 h-4 text-[#1E5071]" />
                   )}
                 </button>
 
@@ -115,10 +115,10 @@ export const TopBar: React.FC<TopBarProps> = ({ onMenuClick }) => {
                     setCurrentBusiness('ak');
                     setIsBizMenuOpen(false);
                   }}
-                  className="w-full flex items-center justify-between px-3.5 py-2.5 hover:bg-[#FFFDF9] transition-colors text-left"
+                  className="w-full flex items-center justify-between px-3.5 py-2.5 hover:bg-slate-50 transition-colors text-left"
                 >
                   <div className="flex items-center gap-2.5">
-                    <div className="w-7 h-7 rounded-lg bg-[#FFDBB0]/30 text-amber-800 flex items-center justify-center">
+                    <div className="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
                       <Building2 className="w-4 h-4" />
                     </div>
                     <div>
@@ -127,7 +127,7 @@ export const TopBar: React.FC<TopBarProps> = ({ onMenuClick }) => {
                     </div>
                   </div>
                   {currentBusiness === 'ak' && (
-                    <Check className="w-4 h-4 text-amber-700" />
+                    <Check className="w-4 h-4 text-emerald-600" />
                   )}
                 </button>
               </div>
@@ -139,11 +139,11 @@ export const TopBar: React.FC<TopBarProps> = ({ onMenuClick }) => {
       {/* Right Controls: Month Filter, Notifications Bell, User Avatar */}
       <div className="flex items-center gap-1 sm:gap-2.5 shrink-0">
         {/* Subtle Palette Swatch Pill */}
-        <div className="hidden lg:flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-[#FFFAD3]/40 border border-[#FFDBB0]/60 shadow-2xs" title="Sadat Warm Palette">
-          <span className="w-2.5 h-2.5 rounded-full bg-[#FFFAD3] border border-amber-300/80 shadow-2xs" />
-          <span className="w-2.5 h-2.5 rounded-full bg-[#FFDBB0] border border-amber-400/80 shadow-2xs" />
-          <span className="w-2.5 h-2.5 rounded-full bg-[#FFCCB8] border border-rose-300/80 shadow-2xs" />
-          <span className="w-2.5 h-2.5 rounded-full bg-[#FFB1B1] border border-rose-400/80 shadow-2xs" />
+        <div className="hidden lg:flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-[#EBF2F7] border border-[#D8E5EE] shadow-2xs" title="Sadat Electronics Theme">
+          <span className="w-2.5 h-2.5 rounded-full bg-[#0E273C] border border-[#163E5C] shadow-2xs" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#1E5071] border border-[#25628A] shadow-2xs" />
+          <span className="w-2.5 h-2.5 rounded-full bg-[#2C6D98] border border-[#3B82B6] shadow-2xs" />
+          <span className="w-2.5 h-2.5 rounded-full bg-white border border-[#D8E5EE] shadow-2xs" />
         </div>
 
         {/* Month Picker */}
@@ -155,9 +155,9 @@ export const TopBar: React.FC<TopBarProps> = ({ onMenuClick }) => {
               setIsNotificationsOpen(false);
               setIsUserMenuOpen(false);
             }}
-            className="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-2.5 py-1.5 rounded-xl border border-[#F0E6DD] bg-white hover:bg-[#FFFDF9] text-slate-700 text-xs sm:text-sm font-semibold transition-all shadow-2xs shrink-0"
+            className="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-2.5 py-1.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs sm:text-sm font-semibold transition-all shadow-2xs shrink-0"
           >
-            <Calendar className="w-3.5 h-3.5 text-[#D44A4A] shrink-0" />
+            <Calendar className="w-3.5 h-3.5 text-[#1E5071] shrink-0" />
             <span className="hidden sm:inline">{selectedMonthLabel}</span>
             <span className="sm:hidden text-[11px] font-bold">
               {MONTH_OPTIONS.find((m) => m.key === selectedMonth)?.label.split(' ')[0] || selectedMonth}
@@ -171,7 +171,7 @@ export const TopBar: React.FC<TopBarProps> = ({ onMenuClick }) => {
                 className="fixed inset-0 z-40"
                 onClick={() => setIsMonthMenuOpen(false)}
               />
-              <div className="absolute right-0 mt-2 w-44 bg-white rounded-2xl shadow-xl border border-[#F0E6DD] py-1.5 z-50 animate-in fade-in zoom-in-95 duration-100">
+              <div className="absolute right-0 mt-2 w-44 bg-white rounded-2xl shadow-xl border border-slate-200 py-1.5 z-50 animate-in fade-in zoom-in-95 duration-100">
                 <div className="px-3.5 py-2 border-b border-slate-100 text-[10px] font-bold text-slate-400 uppercase tracking-wider">
                   Reporting Period
                 </div>
@@ -182,15 +182,15 @@ export const TopBar: React.FC<TopBarProps> = ({ onMenuClick }) => {
                       setSelectedMonth(m.key as MonthKey);
                       setIsMonthMenuOpen(false);
                     }}
-                    className={`w-full flex items-center justify-between px-3.5 py-2 text-xs font-semibold hover:bg-[#FFFDF9] transition-colors ${
+                    className={`w-full flex items-center justify-between px-3.5 py-2 text-xs font-semibold hover:bg-slate-50 transition-colors ${
                       selectedMonth === m.key
-                        ? 'text-[#D44A4A] bg-[#FFFAD3]/50 font-bold'
+                        ? 'text-[#1E5071] bg-[#EBF2F7] font-bold'
                         : 'text-slate-700'
                     }`}
                   >
                     <span>{m.label}</span>
                     {selectedMonth === m.key && (
-                      <Check className="w-3.5 h-3.5 text-[#D44A4A]" />
+                      <Check className="w-3.5 h-3.5 text-[#1E5071]" />
                     )}
                   </button>
                 ))}
@@ -208,12 +208,12 @@ export const TopBar: React.FC<TopBarProps> = ({ onMenuClick }) => {
               setIsMonthMenuOpen(false);
               setIsUserMenuOpen(false);
             }}
-            className="relative p-1.5 sm:p-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-[#FFFDF9] transition-colors shrink-0"
+            className="relative p-1.5 sm:p-2 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors shrink-0"
             aria-label="View notifications"
           >
             <Bell className="w-4 h-4 sm:w-5 sm:h-5" />
             {notifications.length > 0 && (
-              <span className="absolute top-0.5 right-0.5 sm:top-1 sm:right-1 w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-[#FFB1B1] text-[#2D1515] text-[9px] sm:text-[10px] font-black flex items-center justify-center animate-pulse border border-[#2D1515]/20">
+              <span className="absolute top-0.5 right-0.5 sm:top-1 sm:right-1 w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-red-600 text-white text-[9px] sm:text-[10px] font-bold flex items-center justify-center animate-pulse">
                 {notifications.length}
               </span>
             )}
@@ -234,7 +234,7 @@ export const TopBar: React.FC<TopBarProps> = ({ onMenuClick }) => {
               setIsMonthMenuOpen(false);
               setIsNotificationsOpen(false);
             }}
-            className="flex items-center gap-1 sm:gap-2 p-0.5 sm:p-1 sm:pl-2 rounded-xl border border-[#F0E6DD] hover:bg-[#FFFDF9] transition-colors shrink-0"
+            className="flex items-center gap-1 sm:gap-2 p-0.5 sm:p-1 sm:pl-2 rounded-xl border border-slate-200 hover:bg-slate-50 transition-colors shrink-0"
           >
             <div className="text-right hidden sm:block">
               <span className="text-xs font-bold text-slate-800 block leading-tight">
@@ -244,7 +244,7 @@ export const TopBar: React.FC<TopBarProps> = ({ onMenuClick }) => {
                 Administrator
               </span>
             </div>
-            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-tr from-[#FFB1B1] via-[#FFCCB8] to-[#FFDBB0] text-[#2D1515] flex items-center justify-center font-extrabold text-[11px] sm:text-xs shadow-2xs shrink-0">
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-tr from-[#143B55] via-[#1E5071] to-[#2C6D98] text-white flex items-center justify-center font-extrabold text-[11px] sm:text-xs shadow-2xs shrink-0">
               SD
             </div>
             <ChevronDown className="w-3.5 h-3.5 text-slate-400 hidden sm:block" />

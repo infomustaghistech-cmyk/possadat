@@ -210,8 +210,8 @@ export const DashboardScreen: React.FC = () => {
       const goods = Math.max(0, metrics.goodsProfit);
       const service = Math.max(0, metrics.serviceShopProfit);
       return [
-        { name: 'Goods Sale', value: goods, color: '#FFB1B1' },
-        { name: 'Service Workshop', value: service, color: '#FFDBB0' },
+        { name: 'Goods Sale', value: goods, color: '#1E5071' },
+        { name: 'Service Workshop', value: service, color: '#2C6D98' },
       ];
     } else {
       const wholesale = Math.max(0, metrics.goodsProfit);
@@ -219,8 +219,8 @@ export const DashboardScreen: React.FC = () => {
         .filter((p) => p.date.startsWith(selectedMonth))
         .reduce((sum, p) => sum + p.amount, 0);
       return [
-        { name: 'Appliance Sales', value: wholesale, color: '#FFDBB0' },
-        { name: 'Cash Recovery', value: recoveryCollected, color: '#FFCCB8' },
+        { name: 'Appliance Sales', value: wholesale, color: '#1E5071' },
+        { name: 'Cash Recovery', value: recoveryCollected, color: '#2C6D98' },
       ];
     }
   }, [isSadat, metrics, dealerPayments, selectedMonth]);
@@ -314,22 +314,22 @@ export const DashboardScreen: React.FC = () => {
         </div>
 
         <div className="flex items-center gap-2 self-start sm:self-auto">
-          <div className="px-3 py-1.5 rounded-xl bg-white border border-[#F0E6DD] shadow-2xs text-[11px] sm:text-xs font-semibold text-slate-700 flex items-center gap-1.5">
-            <Clock className="w-3.5 h-3.5 text-[#D44A4A]" />
+          <div className="px-3 py-1.5 rounded-xl bg-white border border-slate-200 shadow-2xs text-[11px] sm:text-xs font-semibold text-slate-700 flex items-center gap-1.5">
+            <Clock className="w-3.5 h-3.5 text-[#1E5071]" />
             <span>Today: 12 Oct 2026</span>
           </div>
         </div>
       </div>
 
-      {/* Row 1: 4 KPI Tiles Styled with User's 4-Color Palette (2x2 on Mobile like screenshot) */}
+      {/* Row 1: 4 KPI Tiles Styled with Sadat Electronics Logo Colors (2x2 on Mobile) */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
-        {/* KPI Tile 1: Total Sales / Dispatch (#FFB1B1 Coral Rose) */}
-        <div className="bg-white rounded-[14px] border border-[#F0E6DD] shadow-xs overflow-hidden flex flex-col justify-between">
-          <div className="bg-gradient-to-r from-[#FFB1B1] to-[#FF9E9E] px-3 py-2 sm:px-4 sm:py-2.5 text-slate-900 flex items-center justify-between font-bold">
+        {/* KPI Tile 1: Total Sales / Dispatch (Deep Navy Blue #1E5071) */}
+        <div className="bg-white rounded-[14px] border border-slate-200 shadow-xs overflow-hidden flex flex-col justify-between">
+          <div className="bg-gradient-to-r from-[#1E5071] to-[#25628A] px-3 py-2 sm:px-4 sm:py-2.5 text-white flex items-center justify-between font-bold">
             <span className="text-[11px] sm:text-xs uppercase tracking-wider truncate">
               {metrics.card1Title}
             </span>
-            {isSadat ? <ShoppingBag className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-900 shrink-0" /> : <Truck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-900 shrink-0" />}
+            {isSadat ? <ShoppingBag className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white shrink-0" /> : <Truck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white shrink-0" />}
           </div>
           <div className="p-3 sm:p-5">
             <div className="text-lg sm:text-2xl lg:text-3xl font-extrabold text-slate-900 tabular-nums truncate">
@@ -342,13 +342,13 @@ export const DashboardScreen: React.FC = () => {
           </div>
         </div>
 
-        {/* KPI Tile 2: Service Revenue / Recovery (#FFCCB8 Rosy Peach) */}
-        <div className="bg-white rounded-[14px] border border-[#F0E6DD] shadow-xs overflow-hidden flex flex-col justify-between">
-          <div className="bg-gradient-to-r from-[#FFCCB8] to-[#FFBFA8] px-3 py-2 sm:px-4 sm:py-2.5 text-slate-900 flex items-center justify-between font-bold">
+        {/* KPI Tile 2: Service Revenue / Recovery (Secondary Blue #2C6D98) */}
+        <div className="bg-white rounded-[14px] border border-slate-200 shadow-xs overflow-hidden flex flex-col justify-between">
+          <div className="bg-gradient-to-r from-[#2C6D98] to-[#3683B8] px-3 py-2 sm:px-4 sm:py-2.5 text-white flex items-center justify-between font-bold">
             <span className="text-[11px] sm:text-xs uppercase tracking-wider truncate">
               {metrics.card2Title}
             </span>
-            {isSadat ? <Wrench className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-900 shrink-0" /> : <Receipt className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-900 shrink-0" />}
+            {isSadat ? <Wrench className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white shrink-0" /> : <Receipt className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white shrink-0" />}
           </div>
           <div className="p-3 sm:p-5">
             <div className="text-lg sm:text-2xl lg:text-3xl font-extrabold text-slate-900 tabular-nums truncate">
@@ -361,13 +361,13 @@ export const DashboardScreen: React.FC = () => {
           </div>
         </div>
 
-        {/* KPI Tile 3: Expenses (#FFDBB0 Warm Apricot) */}
-        <div className="bg-white rounded-[14px] border border-[#F0E6DD] shadow-xs overflow-hidden flex flex-col justify-between">
-          <div className="bg-gradient-to-r from-[#FFDBB0] to-[#FFCEA0] px-3 py-2 sm:px-4 sm:py-2.5 text-slate-900 flex items-center justify-between font-bold">
+        {/* KPI Tile 3: Expenses (Dark Blue-Gray #143B55) */}
+        <div className="bg-white rounded-[14px] border border-slate-200 shadow-xs overflow-hidden flex flex-col justify-between">
+          <div className="bg-gradient-to-r from-[#143B55] to-[#1A4B6E] px-3 py-2 sm:px-4 sm:py-2.5 text-white flex items-center justify-between font-bold">
             <span className="text-[11px] sm:text-xs uppercase tracking-wider truncate">
               {metrics.card3Title}
             </span>
-            <BadgeDollarSign className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-900 shrink-0" />
+            <BadgeDollarSign className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white shrink-0" />
           </div>
           <div className="p-3 sm:p-5">
             <div className="text-lg sm:text-2xl lg:text-3xl font-extrabold text-slate-900 tabular-nums truncate">
@@ -379,13 +379,13 @@ export const DashboardScreen: React.FC = () => {
           </div>
         </div>
 
-        {/* KPI Tile 4: Net Profit (#FFFAD3 Cream Yellow) */}
-        <div className="bg-white rounded-[14px] border border-[#F0E6DD] shadow-xs overflow-hidden flex flex-col justify-between">
-          <div className="bg-gradient-to-r from-[#FFFAD3] to-[#FFF5BA] px-3 py-2 sm:px-4 sm:py-2.5 text-slate-900 flex items-center justify-between font-bold border-b border-[#FFDBB0]/40">
+        {/* KPI Tile 4: Net Profit (Deep Blue Crest #0E273C) */}
+        <div className="bg-white rounded-[14px] border border-slate-200 shadow-xs overflow-hidden flex flex-col justify-between">
+          <div className="bg-gradient-to-r from-[#0E273C] to-[#163E5C] px-3 py-2 sm:px-4 sm:py-2.5 text-white flex items-center justify-between font-bold">
             <span className="text-[11px] sm:text-xs uppercase tracking-wider truncate">
               {metrics.card4Title}
             </span>
-            <TrendingUp className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-900 shrink-0" />
+            <TrendingUp className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white shrink-0" />
           </div>
           <div className="p-3 sm:p-5">
             <div className="text-lg sm:text-2xl lg:text-3xl font-extrabold text-slate-900 tabular-nums truncate">
@@ -453,14 +453,14 @@ export const DashboardScreen: React.FC = () => {
         </div>
 
         {/* Card 2: Complaints Pipeline / Dispatch Status */}
-        <div className="bg-white rounded-[14px] border border-[#E6ECF3] p-5 shadow-xs flex flex-col justify-between">
+        <div className="bg-white rounded-[14px] border border-slate-200 p-5 shadow-xs flex flex-col justify-between">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-sm font-bold text-slate-900">
               {isSadat ? 'Complaints Pipeline' : 'Dispatch Status'}
             </h3>
             <button
               onClick={() => setCurrentTab(isSadat ? 'service' : 'wholesale')}
-              className="text-xs font-semibold text-[#1E6BFF] hover:underline flex items-center gap-1"
+              className="text-xs font-semibold text-[#1E5071] hover:underline flex items-center gap-1"
             >
               <span>View All</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -499,7 +499,7 @@ export const DashboardScreen: React.FC = () => {
         </div>
 
         {/* Card 3: Priority System Alerts */}
-        <div className="bg-white rounded-[14px] border border-[#E6ECF3] p-5 shadow-xs flex flex-col justify-between">
+        <div className="bg-white rounded-[14px] border border-slate-200 p-5 shadow-xs flex flex-col justify-between">
           <div className="flex items-center justify-between mb-3">
             <h3 className="text-sm font-bold text-slate-900">Operational Alerts</h3>
             <span className="w-2 h-2 rounded-full bg-red-500 animate-ping" />
@@ -521,7 +521,7 @@ export const DashboardScreen: React.FC = () => {
               </div>
               <button
                 onClick={() => setCurrentTab('inventory')}
-                className="text-[11px] font-bold text-[#D44A4A] hover:underline shrink-0"
+                className="text-[11px] font-bold text-[#1E5071] hover:underline shrink-0"
               >
                 View Stock →
               </button>
@@ -549,7 +549,7 @@ export const DashboardScreen: React.FC = () => {
             </div>
 
             {/* Overdue dealers alert */}
-            <div className="p-3 rounded-xl bg-[#FFFAD3]/60 border border-[#FFDBB0] flex items-start justify-between gap-3">
+            <div className="p-3 rounded-xl bg-amber-50/70 border border-amber-100 flex items-start justify-between gap-3">
               <div className="flex items-start gap-2.5">
                 <ShieldAlert className="w-4 h-4 text-amber-800 mt-0.5 shrink-0" />
                 <div>
@@ -563,7 +563,7 @@ export const DashboardScreen: React.FC = () => {
               </div>
               <button
                 onClick={() => setCurrentTab('wholesale')}
-                className="text-[11px] font-bold text-[#D44A4A] hover:underline shrink-0"
+                className="text-[11px] font-bold text-[#1E5071] hover:underline shrink-0"
               >
                 View Dealers →
               </button>
@@ -579,7 +579,7 @@ export const DashboardScreen: React.FC = () => {
       {/* Row 3: 6-Month Chart & Latest Sales Table */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* 6-Month Bar Chart */}
-        <div className="lg:col-span-2 bg-white rounded-[14px] border border-[#F0E6DD] p-5 sm:p-6 shadow-xs">
+        <div className="lg:col-span-2 bg-white rounded-[14px] border border-slate-200 p-5 sm:p-6 shadow-xs">
           <div className="flex items-center justify-between mb-6">
             <div>
               <h3 className="text-base font-bold text-slate-900">
@@ -591,11 +591,11 @@ export const DashboardScreen: React.FC = () => {
             </div>
             <div className="flex items-center gap-4 text-xs font-semibold">
               <div className="flex items-center gap-1.5">
-                <span className="w-3 h-3 rounded-sm bg-[#FFB1B1]" />
+                <span className="w-3 h-3 rounded-sm bg-[#1E5071]" />
                 <span className="text-slate-600">Revenue</span>
               </div>
               <div className="flex items-center gap-1.5">
-                <span className="w-3 h-3 rounded-sm bg-[#FFDBB0]" />
+                <span className="w-3 h-3 rounded-sm bg-[#2C6D98]" />
                 <span className="text-slate-600">Net Profit</span>
               </div>
             </div>
@@ -615,22 +615,22 @@ export const DashboardScreen: React.FC = () => {
                   formatter={(val: any) => [formatPKR(Number(val)), '']}
                   contentStyle={{ borderRadius: '12px', fontSize: '12px' }}
                 />
-                <Bar dataKey="Revenue" fill="#FFB1B1" radius={[6, 6, 0, 0]} barSize={22} />
-                <Bar dataKey="NetProfit" fill="#FFDBB0" radius={[6, 6, 0, 0]} barSize={22} />
+                <Bar dataKey="Revenue" fill="#1E5071" radius={[6, 6, 0, 0]} barSize={22} />
+                <Bar dataKey="NetProfit" fill="#2C6D98" radius={[6, 6, 0, 0]} barSize={22} />
               </BarChart>
             </ResponsiveContainer>
           </div>
         </div>
 
         {/* Latest Activity Table */}
-        <div className="bg-white rounded-[14px] border border-[#F0E6DD] p-5 shadow-xs flex flex-col justify-between">
+        <div className="bg-white rounded-[14px] border border-slate-200 p-5 shadow-xs flex flex-col justify-between">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-sm font-bold text-slate-900">
               {isSadat ? 'Latest Retail Sales' : 'Latest Dispatches'}
             </h3>
             <button
               onClick={() => setCurrentTab(isSadat ? 'sales' : 'wholesale')}
-              className="text-xs font-semibold text-[#D44A4A] hover:underline"
+              className="text-xs font-semibold text-[#1E5071] hover:underline"
             >
               See History
             </button>

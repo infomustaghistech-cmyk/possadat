@@ -263,7 +263,7 @@ export const SalesScreen: React.FC = () => {
   return (
     <div className="space-y-4 sm:space-y-6">
       {/* Header with Navigation Tabs & Action */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-2 border-b border-[#F0E6DD]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-2 border-b border-slate-200">
         <div>
           <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">
             Retail POS & Sales
@@ -274,12 +274,12 @@ export const SalesScreen: React.FC = () => {
         </div>
 
         <div className="flex items-center gap-2 flex-wrap sm:flex-nowrap">
-          <div className="flex p-1 bg-amber-50/70 border border-[#F0E6DD] rounded-xl shrink-0">
+          <div className="flex p-1 bg-slate-100 border border-slate-200 rounded-xl shrink-0">
             <button
               onClick={() => setActiveTab('pos')}
               className={`px-3 sm:px-4 py-1.5 rounded-lg text-xs font-bold transition-all ${
                 activeTab === 'pos'
-                  ? 'bg-gradient-to-r from-[#FFB1B1] via-[#FFCCB8] to-[#FFDBB0] text-slate-900 shadow-xs'
+                  ? 'bg-gradient-to-r from-[#1E5071] via-[#245D83] to-[#2C6D98] text-white shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
@@ -289,7 +289,7 @@ export const SalesScreen: React.FC = () => {
               onClick={() => setActiveTab('history')}
               className={`px-3 sm:px-4 py-1.5 rounded-lg text-xs font-bold transition-all ${
                 activeTab === 'history'
-                  ? 'bg-gradient-to-r from-[#FFB1B1] via-[#FFCCB8] to-[#FFDBB0] text-slate-900 shadow-xs'
+                  ? 'bg-gradient-to-r from-[#1E5071] via-[#245D83] to-[#2C6D98] text-white shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
@@ -299,9 +299,9 @@ export const SalesScreen: React.FC = () => {
 
           <button
             onClick={() => setIsNewCustModalOpen(true)}
-            className="flex items-center gap-1.5 px-3 py-1.5 sm:py-2 rounded-xl bg-white border border-[#FFDBB0] hover:bg-[#FFFAD3] text-slate-800 text-xs font-bold transition-colors cursor-pointer shrink-0 shadow-2xs"
+            className="flex items-center gap-1.5 px-3 py-1.5 sm:py-2 rounded-xl bg-white border border-slate-200 hover:bg-slate-50 text-slate-800 text-xs font-bold transition-colors cursor-pointer shrink-0 shadow-2xs"
           >
-            <UserPlus className="w-3.5 h-3.5 text-amber-700" />
+            <UserPlus className="w-3.5 h-3.5 text-[#1E5071]" />
             <span>+ Customer</span>
           </button>
         </div>
@@ -311,12 +311,12 @@ export const SalesScreen: React.FC = () => {
       {activeTab === 'pos' ? (
         <div className="space-y-4">
           {/* Mobile Sub-Navigation Segment (Visible ONLY on mobile / tablet < lg) */}
-          <div className="lg:hidden flex items-center p-1 bg-white rounded-xl border border-[#F0E6DD] shadow-xs">
+          <div className="lg:hidden flex items-center p-1 bg-white rounded-xl border border-slate-200 shadow-xs">
             <button
               onClick={() => setPosMobileView('catalog')}
               className={`flex-1 py-2 px-3 rounded-lg text-xs font-bold flex items-center justify-center gap-1.5 transition-all ${
                 posMobileView === 'catalog'
-                  ? 'bg-gradient-to-r from-[#FFB1B1] via-[#FFCCB8] to-[#FFDBB0] text-slate-900 shadow-xs'
+                  ? 'bg-gradient-to-r from-[#1E5071] via-[#245D83] to-[#2C6D98] text-white shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
@@ -327,14 +327,14 @@ export const SalesScreen: React.FC = () => {
               onClick={() => setPosMobileView('cart')}
               className={`flex-1 py-2 px-3 rounded-lg text-xs font-bold flex items-center justify-center gap-1.5 transition-all relative ${
                 posMobileView === 'cart'
-                  ? 'bg-gradient-to-r from-[#FFB1B1] via-[#FFCCB8] to-[#FFDBB0] text-slate-900 shadow-xs'
+                  ? 'bg-gradient-to-r from-[#1E5071] via-[#245D83] to-[#2C6D98] text-white shadow-xs'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               <ShoppingCart className="w-3.5 h-3.5" />
               <span>Cart ({cart.reduce((s, i) => s + i.qty, 0)})</span>
               {cart.length > 0 && (
-                <span className="text-[11px] font-black text-[#D44A4A] tabular-nums">
+                <span className="text-[11px] font-black text-[#8EC5EA] tabular-nums">
                   • {formatPKR(grandTotal)}
                 </span>
               )}
@@ -346,7 +346,7 @@ export const SalesScreen: React.FC = () => {
             <div
               className={`lg:col-span-2 ${
                 posMobileView === 'catalog' ? 'flex' : 'hidden lg:flex'
-              } lg:flex-col overflow-x-auto lg:overflow-visible gap-1.5 p-2 bg-white rounded-[14px] border border-[#F0E6DD] shadow-xs no-scrollbar`}
+              } lg:flex-col overflow-x-auto lg:overflow-visible gap-1.5 p-2 bg-white rounded-[14px] border border-slate-200 shadow-xs no-scrollbar`}
               style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             >
               <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider hidden lg:block px-2 mb-1">
@@ -358,7 +358,7 @@ export const SalesScreen: React.FC = () => {
                   onClick={() => setSelectedCategory(cat)}
                   className={`whitespace-nowrap px-3 py-1.5 lg:py-2 rounded-xl text-xs font-semibold transition-all shrink-0 lg:w-full lg:text-left ${
                     selectedCategory === cat
-                      ? 'bg-gradient-to-r from-[#FFB1B1] via-[#FFCCB8] to-[#FFDBB0] text-slate-900 shadow-xs font-bold'
+                      ? 'bg-gradient-to-r from-[#1E5071] via-[#245D83] to-[#2C6D98] text-white shadow-xs font-bold'
                       : 'text-slate-600 hover:bg-slate-50'
                   }`}
                 >
@@ -381,7 +381,7 @@ export const SalesScreen: React.FC = () => {
                   placeholder="Search product by name, brand, or model..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-[#F0E6DD] bg-white text-xs sm:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#FFB1B1]"
+                  className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 bg-white text-xs sm:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#1E5071]"
                 />
               </div>
 
@@ -399,8 +399,8 @@ export const SalesScreen: React.FC = () => {
                       className={`bg-white rounded-xl border p-3 flex sm:flex-col flex-row items-center sm:items-stretch gap-3 sm:gap-2 justify-between transition-all group ${
                         isOutOfStock
                           ? 'opacity-60 border-slate-200 cursor-not-allowed'
-                          : 'border-[#F0E6DD] hover:border-[#FFB1B1] hover:shadow-md cursor-pointer'
-                      } ${itemInCart ? 'ring-2 ring-[#FFB1B1]/70 bg-[#FFFAD3]/20' : ''}`}
+                          : 'border-slate-200 hover:border-[#1E5071] hover:shadow-md cursor-pointer'
+                      } ${itemInCart ? 'ring-2 ring-[#1E5071] bg-[#EBF2F7]/50' : ''}`}
                     >
                       <div className="flex sm:flex-col items-center sm:items-start gap-3 sm:gap-0 flex-1 min-w-0">
                         {/* Product Image */}
@@ -430,7 +430,7 @@ export const SalesScreen: React.FC = () => {
                               {p.brand}
                             </span>
                             {itemInCart && (
-                              <span className="text-[9px] font-black px-1.5 py-0.2 rounded-full bg-[#FFB1B1] text-slate-900">
+                              <span className="text-[9px] font-black px-1.5 py-0.2 rounded-full bg-[#1E5071] text-white">
                                 in cart: {itemInCart.qty}
                               </span>
                             )}
@@ -445,7 +445,7 @@ export const SalesScreen: React.FC = () => {
                       </div>
 
                       <div className="sm:mt-3 sm:pt-2 sm:border-t border-slate-100 flex items-center justify-between gap-2 shrink-0">
-                        <span className="text-xs sm:text-sm font-extrabold text-[#D44A4A] tabular-nums">
+                        <span className="text-xs sm:text-sm font-extrabold text-[#1E5071] tabular-nums">
                           {formatPKR(p.retailPrice)}
                         </span>
                         <button
@@ -453,7 +453,7 @@ export const SalesScreen: React.FC = () => {
                           className={`w-7 h-7 rounded-lg flex items-center justify-center transition-colors ${
                             isOutOfStock
                               ? 'bg-slate-100 text-slate-400'
-                              : 'bg-[#FFFAD3] text-amber-900 border border-[#FFDBB0] group-hover:bg-[#FFB1B1] group-hover:text-slate-900'
+                              : 'bg-[#EBF2F7] text-[#1E5071] border border-[#D8E5EE] group-hover:bg-[#1E5071] group-hover:text-white'
                           }`}
                           title="Add to sale"
                         >
@@ -468,7 +468,7 @@ export const SalesScreen: React.FC = () => {
 
             {/* Right "Current Sale" Panel (4 cols on desktop, full view on mobile when tab is cart) */}
             <div
-              className={`lg:col-span-4 bg-white rounded-[14px] border border-[#F0E6DD] shadow-md p-4 sm:p-5 space-y-4 ${
+              className={`lg:col-span-4 bg-white rounded-[14px] border border-slate-200 shadow-md p-4 sm:p-5 space-y-4 ${
                 posMobileView === 'cart' ? 'block' : 'hidden lg:block'
               }`}
             >
@@ -513,7 +513,7 @@ export const SalesScreen: React.FC = () => {
                 <select
                   value={selectedCustomerId}
                   onChange={(e) => setSelectedCustomerId(e.target.value)}
-                  className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-slate-800 bg-slate-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#FFB1B1]"
+                  className="w-full px-3 py-2 rounded-xl border border-slate-200 text-xs font-semibold text-slate-800 bg-slate-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#1E5071]"
                 >
                   {customers.map((c) => (
                     <option key={c.id} value={c.id}>
@@ -530,7 +530,7 @@ export const SalesScreen: React.FC = () => {
                     <p>Cart is empty.</p>
                     <button
                       onClick={() => setPosMobileView('catalog')}
-                      className="lg:hidden px-3 py-1.5 rounded-lg bg-amber-50 border border-[#FFDBB0] text-amber-900 font-bold text-xs"
+                      className="lg:hidden px-3 py-1.5 rounded-lg bg-slate-100 border border-slate-200 text-slate-800 font-bold text-xs"
                     >
                       Browse Products
                     </button>
@@ -594,13 +594,13 @@ export const SalesScreen: React.FC = () => {
                     value={discountAmount || ''}
                     onChange={(e) => setDiscountAmount(Math.max(0, Number(e.target.value)))}
                     placeholder="0"
-                    className="w-24 px-2 py-1 rounded-lg border border-slate-200 text-right font-bold text-slate-900 tabular-nums focus:outline-none focus:ring-1 focus:ring-[#FFB1B1]"
+                    className="w-24 px-2 py-1 rounded-lg border border-slate-200 text-right font-bold text-slate-900 tabular-nums focus:outline-none focus:ring-1 focus:ring-[#1E5071]"
                   />
                 </div>
 
                 <div className="flex justify-between text-sm sm:text-base font-extrabold text-slate-900 pt-1.5 border-t border-slate-100">
                   <span>Grand Total</span>
-                  <span className="text-[#D44A4A] tabular-nums font-black">{formatPKR(grandTotal)}</span>
+                  <span className="text-[#1E5071] tabular-nums font-black">{formatPKR(grandTotal)}</span>
                 </div>
               </div>
 
@@ -627,7 +627,7 @@ export const SalesScreen: React.FC = () => {
                     onClick={() => setPaymentMethod('Bank / JazzCash / Easypaisa')}
                     className={`py-2 px-3 rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition-all ${
                       paymentMethod === 'Bank / JazzCash / Easypaisa'
-                        ? 'bg-gradient-to-r from-[#FFB1B1] via-[#FFCCB8] to-[#FFDBB0] text-slate-900 shadow-xs'
+                        ? 'bg-gradient-to-r from-[#1E5071] via-[#245D83] to-[#2C6D98] text-white shadow-xs'
                         : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
                     }`}
                   >
@@ -638,7 +638,7 @@ export const SalesScreen: React.FC = () => {
               </div>
 
               {/* Amount Received Now (Partial payment / Khata support) */}
-              <div className="bg-[#FFFAD3]/40 p-3 rounded-xl border border-[#FFDBB0] space-y-2 text-xs">
+              <div className="bg-[#EBF2F7] p-3 rounded-xl border border-[#D8E5EE] space-y-2 text-xs">
                 <div className="flex items-center justify-between">
                   <span className="font-bold text-slate-700">Amount Received Now</span>
                   <input
@@ -648,7 +648,7 @@ export const SalesScreen: React.FC = () => {
                     placeholder={grandTotal.toString()}
                     value={paidNowInput}
                     onChange={(e) => setPaidNowInput(e.target.value)}
-                    className="w-28 px-2.5 py-1 rounded-lg border border-slate-300 bg-white text-right font-extrabold text-slate-900 tabular-nums focus:outline-none focus:ring-1 focus:ring-[#FFB1B1]"
+                    className="w-28 px-2.5 py-1 rounded-lg border border-slate-300 bg-white text-right font-extrabold text-slate-900 tabular-nums focus:outline-none focus:ring-1 focus:ring-[#1E5071]"
                   />
                 </div>
 
@@ -657,22 +657,22 @@ export const SalesScreen: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setPaidNowInput(grandTotal.toString())}
-                    className="px-2 py-0.5 rounded-md bg-white border border-[#FFDBB0] text-[10px] font-bold text-slate-700 hover:bg-[#FFFAD3]"
+                    className="px-2 py-0.5 rounded-md bg-white border border-[#D8E5EE] text-[10px] font-bold text-slate-700 hover:bg-[#EBF2F7]"
                   >
                     Full (Rs. {grandTotal.toLocaleString()})
                   </button>
                   <button
                     type="button"
                     onClick={() => setPaidNowInput('0')}
-                    className="px-2 py-0.5 rounded-md bg-white border border-[#FFDBB0] text-[10px] font-bold text-slate-700 hover:bg-[#FFFAD3]"
+                    className="px-2 py-0.5 rounded-md bg-white border border-[#D8E5EE] text-[10px] font-bold text-slate-700 hover:bg-[#EBF2F7]"
                   >
                     Khata / 0
                   </button>
                 </div>
 
-                <div className="flex justify-between font-bold text-slate-600 pt-1 border-t border-[#FFDBB0]/50">
+                <div className="flex justify-between font-bold text-slate-600 pt-1 border-t border-[#D8E5EE]">
                   <span>Remaining Khata Balance:</span>
-                  <span className={balanceOwed > 0 ? 'text-[#D44A4A] font-extrabold' : 'text-emerald-600 font-bold'}>
+                  <span className={balanceOwed > 0 ? 'text-amber-700 font-extrabold' : 'text-emerald-600 font-bold'}>
                     {formatPKR(balanceOwed)}
                   </span>
                 </div>
@@ -685,10 +685,10 @@ export const SalesScreen: React.FC = () => {
                 className={`w-full py-3 px-4 rounded-xl font-black text-sm shadow-md transition-all flex items-center justify-center gap-2 ${
                   cart.length === 0
                     ? 'bg-slate-200 text-slate-400 cursor-not-allowed shadow-none'
-                    : 'bg-gradient-to-r from-[#FFB1B1] via-[#FFCCB8] to-[#FFDBB0] text-slate-900 hover:opacity-95 shadow-orange-500/10 active:scale-[0.99] cursor-pointer'
+                    : 'bg-gradient-to-r from-[#1E5071] via-[#245D83] to-[#2C6D98] text-white hover:opacity-95 shadow-[#1E5071]/20 active:scale-[0.99] cursor-pointer'
                 }`}
               >
-                <CheckCircle2 className="w-4 h-4 text-slate-900" />
+                <CheckCircle2 className="w-4 h-4 text-white" />
                 <span>Complete Sale & Print Receipt</span>
               </button>
             </div>
@@ -698,14 +698,14 @@ export const SalesScreen: React.FC = () => {
           {posMobileView === 'catalog' && cart.length > 0 && (
             <div className="fixed bottom-3 left-3 right-3 z-30 lg:hidden bg-slate-900/95 backdrop-blur-md text-white p-3 rounded-2xl shadow-2xl border border-slate-700/60 flex items-center justify-between animate-in fade-in slide-in-from-bottom-3 duration-200">
               <div className="flex items-center gap-2.5">
-                <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#FFB1B1] to-[#FFDBB0] text-slate-900 flex items-center justify-center font-black text-xs shadow-xs">
+                <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#143B55] to-[#1E5071] text-white flex items-center justify-center font-black text-xs shadow-xs">
                   {cart.reduce((sum, i) => sum + i.qty, 0)}
                 </div>
                 <div>
                   <p className="text-[10px] text-slate-300 font-medium">
                     {cart.length} item(s) selected
                   </p>
-                  <p className="text-sm font-black text-[#FFFAD3] tabular-nums">
+                  <p className="text-sm font-black text-white tabular-nums">
                     {formatPKR(grandTotal)}
                   </p>
                 </div>
@@ -713,7 +713,7 @@ export const SalesScreen: React.FC = () => {
 
               <button
                 onClick={() => setPosMobileView('cart')}
-                className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#FFB1B1] via-[#FFCCB8] to-[#FFDBB0] text-slate-900 text-xs font-black shadow-md flex items-center gap-1.5 active:scale-95 transition-all cursor-pointer"
+                className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#1E5071] via-[#245D83] to-[#2C6D98] text-white text-xs font-black shadow-md flex items-center gap-1.5 active:scale-95 transition-all cursor-pointer"
               >
                 <span>Checkout</span>
                 <ShoppingCart className="w-3.5 h-3.5" />
@@ -725,7 +725,7 @@ export const SalesScreen: React.FC = () => {
         /* SALES HISTORY VIEW */
         <div className="space-y-4">
           {/* Filters Bar */}
-          <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between bg-white p-3.5 sm:p-4 rounded-[14px] border border-[#F0E6DD] shadow-xs">
+          <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between bg-white p-3.5 sm:p-4 rounded-[14px] border border-slate-200 shadow-xs">
             <div className="relative w-full sm:w-80">
               <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-3" />
               <input
@@ -733,7 +733,7 @@ export const SalesScreen: React.FC = () => {
                 placeholder="Search invoice #, customer name, phone..."
                 value={historySearch}
                 onChange={(e) => setHistorySearch(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 rounded-xl border border-slate-200 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-[#FFB1B1]"
+                className="w-full pl-10 pr-4 py-2 rounded-xl border border-slate-200 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-[#1E5071]"
               />
             </div>
 
@@ -748,7 +748,7 @@ export const SalesScreen: React.FC = () => {
                   onClick={() => setStatusFilter(st)}
                   className={`px-3 py-1 rounded-lg text-xs font-bold transition-all shrink-0 ${
                     statusFilter === st
-                      ? 'bg-gradient-to-r from-[#FFB1B1] via-[#FFCCB8] to-[#FFDBB0] text-slate-900 shadow-2xs font-extrabold'
+                      ? 'bg-gradient-to-r from-[#1E5071] via-[#245D83] to-[#2C6D98] text-white shadow-2xs font-extrabold'
                       : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                   }`}
                 >
@@ -759,10 +759,10 @@ export const SalesScreen: React.FC = () => {
           </div>
 
           {/* Desktop / Tablet Table (Hidden on Mobile) */}
-          <div className="hidden md:block bg-white rounded-[14px] border border-[#F0E6DD] shadow-xs overflow-hidden">
+          <div className="hidden md:block bg-white rounded-[14px] border border-slate-200 shadow-xs overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs">
-                <thead className="bg-[#FFFAD3]/40 text-slate-600 font-bold uppercase tracking-wider border-b border-[#F0E6DD]">
+                <thead className="bg-slate-50 text-slate-600 font-bold uppercase tracking-wider border-b border-slate-200">
                   <tr>
                     <th className="py-3.5 px-4">Invoice #</th>
                     <th className="py-3.5 px-4">Date</th>
@@ -784,7 +784,7 @@ export const SalesScreen: React.FC = () => {
                     </tr>
                   ) : (
                     filteredSalesHistory.map((s) => (
-                      <tr key={s.id} className="hover:bg-amber-50/30 transition-colors">
+                      <tr key={s.id} className="hover:bg-slate-50 transition-colors">
                         <td className="py-3 px-4 font-bold text-slate-900">{s.id}</td>
                         <td className="py-3 px-4 text-slate-500">{formatDate(s.date)}</td>
                         <td className="py-3 px-4">
@@ -801,7 +801,7 @@ export const SalesScreen: React.FC = () => {
                           {formatPKR(s.paidAmount)}
                         </td>
                         <td className="py-3 px-4 text-right font-bold tabular-nums">
-                          <span className={s.balanceAmount > 0 ? 'text-[#D44A4A]' : 'text-slate-400'}>
+                          <span className={s.balanceAmount > 0 ? 'text-amber-700 font-extrabold' : 'text-slate-400'}>
                             {formatPKR(s.balanceAmount)}
                           </span>
                         </td>
@@ -821,7 +821,7 @@ export const SalesScreen: React.FC = () => {
                         <td className="py-3 px-4 text-right space-x-1.5 whitespace-nowrap">
                           <button
                             onClick={() => setViewInvoice(s)}
-                            className="px-2 py-1 rounded-lg bg-[#FFFAD3] border border-[#FFDBB0] text-amber-900 hover:bg-[#FFB1B1] font-bold text-[11px] transition-colors"
+                            className="px-2 py-1 rounded-lg bg-[#EBF2F7] border border-[#D8E5EE] text-[#1E5071] hover:bg-[#1E5071] hover:text-white font-bold text-[11px] transition-colors"
                           >
                             View
                           </button>
@@ -865,14 +865,14 @@ export const SalesScreen: React.FC = () => {
           {/* Mobile Invoice Cards (Visible ONLY on mobile screens < md) */}
           <div className="block md:hidden space-y-3">
             {filteredSalesHistory.length === 0 ? (
-              <div className="py-8 text-center text-slate-400 bg-white rounded-xl border border-[#F0E6DD]">
+              <div className="py-8 text-center text-slate-400 bg-white rounded-xl border border-slate-200">
                 No sales found matching search criteria.
               </div>
             ) : (
               filteredSalesHistory.map((s) => (
                 <div
                   key={s.id}
-                  className="bg-white rounded-xl border border-[#F0E6DD] p-3.5 shadow-xs space-y-2.5"
+                  className="bg-white rounded-xl border border-slate-200 p-3.5 shadow-xs space-y-2.5"
                 >
                   {/* Top Bar: Invoice ID, Date & Status */}
                   <div className="flex items-center justify-between">
@@ -922,14 +922,14 @@ export const SalesScreen: React.FC = () => {
                   </div>
 
                   {/* Amount Breakdown 3-col pill */}
-                  <div className="grid grid-cols-3 gap-1 bg-[#FFFAD3]/40 border border-[#FFDBB0] rounded-xl p-2 text-center">
+                  <div className="grid grid-cols-3 gap-1 bg-slate-50 border border-slate-200 rounded-xl p-2 text-center">
                     <div>
                       <span className="text-[10px] text-slate-500 block">Total</span>
                       <span className="text-xs font-black text-slate-900 tabular-nums">
                         {formatPKR(s.total)}
                       </span>
                     </div>
-                    <div className="border-x border-[#FFDBB0]/60">
+                    <div className="border-x border-slate-200">
                       <span className="text-[10px] text-slate-500 block">Paid</span>
                       <span className="text-xs font-black text-emerald-700 tabular-nums">
                         {formatPKR(s.paidAmount)}
@@ -939,7 +939,7 @@ export const SalesScreen: React.FC = () => {
                       <span className="text-[10px] text-slate-500 block">Balance</span>
                       <span
                         className={`text-xs font-black tabular-nums ${
-                          s.balanceAmount > 0 ? 'text-[#D44A4A]' : 'text-slate-400'
+                          s.balanceAmount > 0 ? 'text-amber-700' : 'text-slate-400'
                         }`}
                       >
                         {formatPKR(s.balanceAmount)}
@@ -951,7 +951,7 @@ export const SalesScreen: React.FC = () => {
                   <div className="flex items-center gap-1.5 pt-1">
                     <button
                       onClick={() => setViewInvoice(s)}
-                      className="flex-1 py-1.5 rounded-lg bg-[#FFFAD3] hover:bg-[#FFDBB0] border border-[#FFDBB0] text-amber-950 font-bold text-xs transition-colors flex items-center justify-center gap-1 cursor-pointer"
+                      className="flex-1 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-800 font-bold text-xs transition-colors flex items-center justify-center gap-1 cursor-pointer"
                     >
                       <Receipt className="w-3.5 h-3.5" />
                       <span>Receipt</span>
@@ -1089,17 +1089,17 @@ export const SalesScreen: React.FC = () => {
         {viewInvoice && (
           <div className="space-y-4 sm:space-y-6">
             {/* Printable Memo View */}
-            <div className="p-3.5 sm:p-6 bg-[#FFFAD3]/30 rounded-2xl border border-[#F0E6DD] space-y-4 sm:space-y-5 text-slate-800">
-              <div className="flex justify-between items-start border-b border-[#F0E6DD] pb-3 sm:pb-4">
+            <div className="p-3.5 sm:p-6 bg-[#F4F8FA] rounded-2xl border border-slate-200 space-y-4 sm:space-y-5 text-slate-800">
+              <div className="flex justify-between items-start border-b border-slate-200 pb-3 sm:pb-4">
                 <div>
-                  <h3 className="text-base sm:text-lg font-extrabold text-[#0B1F3A]">SADAT ELECTRONICS</h3>
+                  <h3 className="text-base sm:text-lg font-extrabold text-[#0E273C]">SADAT ELECTRONICS</h3>
                   <p className="text-[11px] sm:text-xs text-slate-500">
                     Main Rashid Minhas Road, Gulshan-e-Iqbal, Karachi
                   </p>
                   <p className="text-[10px] sm:text-xs text-slate-500">Phone: +92 21 34981122 • NTN: 7412890-3</p>
                 </div>
                 <div className="text-right">
-                  <span className="text-sm sm:text-base font-extrabold text-[#D44A4A] block">{viewInvoice.id}</span>
+                  <span className="text-sm sm:text-base font-extrabold text-[#1E5071] block">{viewInvoice.id}</span>
                   <span className="text-[10px] sm:text-xs text-slate-500">{formatDate(viewInvoice.date)}</span>
                 </div>
               </div>
@@ -1144,7 +1144,7 @@ export const SalesScreen: React.FC = () => {
               </div>
 
               {/* Totals */}
-              <div className="pt-3 border-t border-[#F0E6DD] space-y-1.5 text-xs text-right">
+              <div className="pt-3 border-t border-slate-200 space-y-1.5 text-xs text-right">
                 <div className="flex justify-between">
                   <span className="text-slate-500">Subtotal:</span>
                   <span className="font-bold tabular-nums">{formatPKR(viewInvoice.subtotal)}</span>
@@ -1155,9 +1155,9 @@ export const SalesScreen: React.FC = () => {
                     <span className="font-bold tabular-nums">-{formatPKR(viewInvoice.discount)}</span>
                   </div>
                 )}
-                <div className="flex justify-between text-sm sm:text-base font-extrabold text-slate-900 pt-1 border-t border-[#F0E6DD]">
+                <div className="flex justify-between text-sm sm:text-base font-extrabold text-slate-900 pt-1 border-t border-slate-200">
                   <span>Net Bill Total:</span>
-                  <span className="text-[#D44A4A] tabular-nums font-black">{formatPKR(viewInvoice.total)}</span>
+                  <span className="text-[#1E5071] tabular-nums font-black">{formatPKR(viewInvoice.total)}</span>
                 </div>
                 <div className="flex justify-between font-bold text-emerald-700">
                   <span>Paid Amount:</span>

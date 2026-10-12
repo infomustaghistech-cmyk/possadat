@@ -398,8 +398,8 @@ export const ServiceScreen: React.FC = () => {
           {/* Main 2-Column Layout: Table (8 cols) + Right Job Details Panel (4 cols) */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
             {/* Table & Mobile Cards */}
-            <div className="lg:col-span-8 bg-white rounded-[14px] border border-[#F0E6DD] shadow-xs overflow-hidden">
-              {/* Mobile Card List (Matches Phone 2 in user reference screenshot) */}
+            <div className="lg:col-span-8 bg-white rounded-[14px] border border-slate-200 shadow-xs overflow-hidden">
+              {/* Mobile Card List */}
               <div className="block md:hidden divide-y divide-slate-100">
                 {filteredComplaints.length === 0 ? (
                   <div className="p-6 text-center text-slate-400 text-xs">
@@ -413,7 +413,7 @@ export const ServiceScreen: React.FC = () => {
                         key={c.id}
                         onClick={() => setSelectedComplaintId(c.id)}
                         className={`p-3.5 flex items-center justify-between cursor-pointer transition-colors ${
-                          isSelected ? 'bg-[#FFFAD3]/60' : 'hover:bg-slate-50'
+                          isSelected ? 'bg-[#EBF2F7]' : 'hover:bg-slate-50'
                         }`}
                       >
                         <div>
